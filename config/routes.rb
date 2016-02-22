@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'inventory_management/recipes'
+
+  get 'inventory_management/ingredients'
+
+  get 'inventory_management/equipment'
+
+  devise_for :users
+  devise_for :admins
   get 'homepage/index'
 
   # The priority is based upon order of creation: first created -> highest priority.

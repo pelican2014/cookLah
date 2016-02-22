@@ -34,6 +34,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'sunspot_rails'
 # Devise is a flexible authentication solution for Rails based on Warden
 gem 'devise'
+# MailCatcher runs a super simple SMTP server which catches any message sent to it to display in a web interface
+gem 'mailcatcher'
+# Nokogiri is an HTML, XML, SAX, and Reader parser. Among Nokogiri's many features is the ability to search documents via XPath or CSS3 selectors.
+gem 'nokogiri'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
