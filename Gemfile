@@ -30,14 +30,14 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-# Sunspot is a Ruby library for expressive, powerful interaction with the Solr search engine.
-gem 'sunspot_rails'
 # Devise is a flexible authentication solution for Rails based on Warden
 gem 'devise'
 # MailCatcher runs a super simple SMTP server which catches any message sent to it to display in a web interface
 gem 'mailcatcher'
 # Nokogiri is an HTML, XML, SAX, and Reader parser. Among Nokogiri's many features is the ability to search documents via XPath or CSS3 selectors.
 gem 'nokogiri'
+# A Scope & Engine based, clean, powerful, customizable and sophisticated paginator for modern web app frameworks and ORMs
+gem 'kaminari'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

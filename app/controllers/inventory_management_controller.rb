@@ -6,9 +6,10 @@ class InventoryManagementController < ApplicationController
   end
 
   def ingredients
-  	@ingredient = Ingredient.first
+    @ingredients = Ingredient.search(params[:search]).page(params[:page]).per(20)
   end
 
   def equipment
   end
+  
 end
