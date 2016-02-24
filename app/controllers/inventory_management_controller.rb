@@ -24,6 +24,7 @@ class InventoryManagementController < ApplicationController
     end
 
     render nothing: true
+    
   end
 
 
