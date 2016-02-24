@@ -1,0 +1,23 @@
+<%= form_tag inventory_management_create_ingredients_path, method: :post,
+						  html: {id: 'create_ingredients_form'}, remote: true do %>
+  <% # create inventory fields according to user requirements %>
+  <% 1.upto(2) do |i| %>
+
+    <%= label_tag 'name' %>
+    <%= text_field_tag "fields[#{i}][name]" %>
+
+    <%= label_tag 'price' %>
+    <%= text_field_tag "fields[#{i}][price]" %>
+
+    <%= label_tag 'unit' %>
+    <%= text_field_tag "fields[#{i}][unit]" %>
+
+    <%= label_tag 'interval' %>
+    <%= text_field_tag "fields[#{i}][interval]" %>
+
+  <% end %>
+
+  <% # submit button for all the form fields of ingredients to create %>
+  <%= submit_tag 'Create', name: nil %>
+
+<% end %>
