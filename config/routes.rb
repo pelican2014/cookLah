@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   get 'inventory_management/equipment'
 
+  # post request (form submit) to inventory_management_create_ingredients_path (inventory_management/ingredients -> unused)
+  post 'inventory_management/ingredients', to: 'inventory_management#create_ingredients', as: 'inventory_management_create_ingredients'
+
   devise_for :users
   devise_for :admins
   get 'homepage/index'
