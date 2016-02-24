@@ -19,3 +19,4 @@
 
 //  include JavaScript files
 //= ingredients_search.js
+//= create_ingredients.js

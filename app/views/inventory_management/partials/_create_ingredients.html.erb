@@ -1,4 +1,4 @@
-<%= form_tag inventory_management_create_ingredients_path, method: :post,
+<%= form_tag url: inventory_management_create_ingredients_path, method: :post,
 						  html: {id: 'create_ingredients_form'}, remote: true do %>
   <% # create inventory fields according to user requirements %>
   <% 1.upto(2) do |i| %>
