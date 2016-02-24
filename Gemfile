@@ -10,6 +10,9 @@ end
 
 group :development do
   gem 'sqlite3'
+
+  # MailCatcher runs a super simple SMTP server which catches any message sent to it to display in a web interface
+  gem 'mailcatcher', '~> 0.6.4'
 end
 
 # Use SCSS for stylesheets
@@ -31,13 +34,11 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Devise is a flexible authentication solution for Rails based on Warden
-gem 'devise'
-# MailCatcher runs a super simple SMTP server which catches any message sent to it to display in a web interface
-gem 'mailcatcher'
+gem 'devise', '~> 3.5.6'
 # Nokogiri is an HTML, XML, SAX, and Reader parser. Among Nokogiri's many features is the ability to search documents via XPath or CSS3 selectors.
-gem 'nokogiri'
+gem 'nokogiri', '~> 1.6.7'
 # A Scope & Engine based, clean, powerful, customizable and sophisticated paginator for modern web app frameworks and ORMs
-gem 'kaminari'
+gem 'kaminari', '~> 0.16.3'
 # jQuery UI for the Rails asset pipeline
 gem 'jquery-ui-rails', '~> 5.0.5'
 
