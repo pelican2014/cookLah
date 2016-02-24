@@ -2,7 +2,7 @@
 An IS1112 project that brings fresh ingredients to your door step
 
 # TODO
-* fix email link not received problem - xiya
+* inventory management interface - xiya
 * start styling home page (can add placeholder text for info from database; leave out contents that should be generated using loop or add-on, like the recipe section;) - Jack
 * start filling up the database after the inventory management interface is complete - Ziying
 * advise functionalities and overall user experience -Jingjing
@@ -15,4 +15,4 @@ An IS1112 project that brings fresh ingredients to your door step
 * When in doubt, Google is your best friend.
 * Create a pull request to my github repository for every change you make (styled a page/create and generate the template for a new page). Watch this video https://www.youtube.com/watch?v=SCZF6I-Rc4I to understand the basics of github collaboration. (After you sent the pull request, I will receive it and decide how to merge with the main repository. So don't send a pull request after you've edited a whole chunk. Clearly label every change you make for ease of code merging)
 * https://www.codecademy.com/ this is the website that I thought was quite good. Sign up and go to the course Make a Website. You should see a message at the top of the page that says `This is the new Make a Website. Click Here to view the old version (available until 02/28/16).` Use the old version because I think a lot of stuff is locked up in the new version.
-* http://cooklah.herokuapp.com/ is the address of our website. Please add ingredients/recipes/equipment to this website after inventory management interface is finished.
+* http://cooklah.herokuapp.com/ is the address of our website. Please add ingredients/recipes/equipment to this website after inventory management interface is finished. https://cooklah.herokuapp.com/inventory_management/ingredients is the inventory management page. Replace ingredients with recipes and equipment respectively to manage them. Sign in as admin when prompted. User name is `admin@CookLah`. Password is `IS1112ROCKS`.
