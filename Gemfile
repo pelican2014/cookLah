@@ -38,6 +38,8 @@ gem 'mailcatcher'
 gem 'nokogiri'
 # A Scope & Engine based, clean, powerful, customizable and sophisticated paginator for modern web app frameworks and ORMs
 gem 'kaminari'
+# jQuery UI for the Rails asset pipeline
+gem 'jquery-ui-rails', '~> 5.0.5'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
