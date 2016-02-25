@@ -1,17 +1,7 @@
 <!-- search recipes -->
-<%= form_tag inventory_management_recipes_path, :method => 'get', :id => 'recipes_search' do %>
-  <!-- search field -->
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-
-    <% # submit existing ingredients code in hidden field %>
-    <% @ingredients_for_recipe.each do |ingredient| %>
-      <%= hidden_field_tag 'existing_ingredients_code_for_recipe[]', ingredient.code %>
-    <% end %>
-
-    <%= submit_tag 'Search', name: nil %>
-  </p>
-<% end %>
+<div id='recipes_search_fields'>
+  <%= render '/inventory_management/partials/recipes_search_fields' %>
+</div>
 
 <!-- search results -->
 <div id='recipes_search_results'>

@@ -7,7 +7,18 @@
   <div class="well">
 
   	<div id="recipe_ingredients_section">
-  	  <%= render '/inventory_management/partials/recipe_modal/recipe_ingredients_section' %>
+	  <% # enter ingredient code to add ingredient %>
+	  <div id="add_ingredient_to_recipe_form_section">
+		<%= render '/inventory_management/partials/add_ingredient_to_recipe_form_section' %>
+	  </div>
+	  <div id="ingredients_table_for_recipe">
+		<% # table of ingredients to add to recipe %>
+		<%= render '/inventory_management/partials/ingredients_table_for_recipe' %>
+	  </div>
+
+	  <% # button and modal associated with finding ingredients %>
+	  <%= render '/inventory_management/partials/recipe_modal/finding_ingredients' %>
+
   	</div>
 
 	<!-- table of equipment to add to recipe -->

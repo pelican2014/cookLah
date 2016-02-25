@@ -14,19 +14,9 @@
       <div class="modal-body">
 
         <!-- search ingredients -->
-        <%= form_tag inventory_management_recipes_path, :method => 'get', id: 'ingredients_search' do %>
-        <!-- search field -->
-        <p>
-          <%= text_field_tag :search %>
-
-          <% # submit existing ingredients code in hidden field %>
-          <% @ingredients_for_recipe.each do |ingredient| %>
-            <%= hidden_field_tag 'existing_ingredients_code_for_recipe[]', ingredient.code, id: 'hidden_mother_fucker' %>
-          <% end %>
-
-          <%= submit_tag 'Search', name: nil %>
-        </p>
-        <% end %>
+        <div id="ingredients_search_fields">
+          <%= render '/inventory_management/partials/recipe_modal/ingredients_search_fields' %>
+        </div>
 
         <!-- ingredients search results -->
         <div id="ingredients_search_results">

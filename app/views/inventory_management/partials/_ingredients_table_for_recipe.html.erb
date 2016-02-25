@@ -1,0 +1,20 @@
+<!-- table of ingredients to add to recipe -->
+<div class="panel panel-default">
+  <div class="panel-heading">Ingredients for Recipe</div>
+  <table class="table">
+    <tr>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Unit</th>
+    </tr>
+    <% @ingredients_for_recipe.each do |ingredient| %>
+      <tr>
+        <td><%= ingredient.code %></td>
+        <td><%= ingredient.name %></td>
+        <td><%= ingredient.price %></td>
+        <td><%= ingredient.unit %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
