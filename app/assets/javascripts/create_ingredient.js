@@ -5,9 +5,10 @@ $(function(){
 
   function closeCollapsible(){
 
-    $('#collapseExample').collapse('hide');
+    $('#collapse_ingredient').collapse('hide');
 
     $('#ingredients_search').submit();
+
   }
 
 });

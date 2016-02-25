@@ -1,14 +1,17 @@
-<button id='create_new_equipment_button'>Create New Equipment</button>
+<!-- create new ingredient section -->
+<div id='create_new_equipment_section'>
+  <%= render '/inventory_management/partials/create_equipment' %>
+</div>
+
+<!-- search equipment -->
 <%= form_tag inventory_management_equipment_path, :method => 'get', :id => 'equipment_search' do %>
   <p>
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag 'Search', name: nil %>
   </p>
-  <div id='equipment_search_results'>
-  	<%= render '/inventory_management/partials/equipment_search_results' %>
-  </div>
 <% end %>
 
-<div id='create_new_equipment_dialog'>
-  <%= render '/inventory_management/partials/create_equipment' %>
+<!-- equipment search results -->
+<div id='equipment_search_results'>
+  <%= render '/inventory_management/partials/equipment_search_results' %>
 </div>

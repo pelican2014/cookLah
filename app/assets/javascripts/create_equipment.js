@@ -1,30 +1,14 @@
 $(function(){
 
-  // configure dialog
-  $('#create_new_equipment_dialog').dialog({
-    autoOpen: false,
-    title: 'Add New Equipment',
-    autoResize: true,
-    modal: true,
-  });
+  // close collapsible and trigger search to update ingredients search results
+  $('#create_equipment_form').on('ajax:success', closeCollapsible);
 
-  // show dialog on click of button
-  $('#create_new_equipment_button').click(showDialog);
+  function closeCollapsible(){
 
-  // function for showing dialog
-  function showDialog(){
-    $('#create_new_equipment_dialog').dialog('open');
-    return false;
-  }
+    $('#collapse_equipment').collapse('hide');
 
-  $('#create_equipment_form').on('ajax:success', closeDialog);
-
-  // ajax response after form is submitted
-  function closeDialog(){
-    // close dialog
-    $('#create_new_equipment_dialog').dialog('close');
-    // trigger search to update ingredients search results
     $('#equipment_search').submit();
+    
   }
 
 });
