@@ -14,10 +14,11 @@
       <%= text_field_tag :ingredient_code %>
 
       <% # submit existing ingredients code in hidden field %>
-      <% @ingredients_for_recipe.each do |ingredient| %>
-        <%= hidden_field_tag 'existing_ingredients_code_for_recipe[]', ingredient.code %>
-      <% end %>
+	  <% @ingredients_for_recipe.each do |ingredient| %>
+	    <%= hidden_field_tag 'existing_ingredients_code_for_recipe[]', ingredient.code %>
+	  <% end %>
 
+      <% # name is only nil here and 'submit' elsewhere for recipes -> create [] only when first open or add ingre %>
       <%= submit_tag 'Enter', name: nil %>
     </p>
     <% end %>

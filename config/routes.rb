@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post 'inventory_management/create_recipe', to: 'inventory_management#create_recipe', as: 'inventory_management_create_recipe'
 
 
+
   devise_for :users
   devise_for :admins
   get 'homepage/index'

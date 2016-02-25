@@ -5,7 +5,7 @@ $(function(){
 
   function closeCollapsible(){
 
-    $('#collapse_equipment').collapse('hide');
+    $('#collapsible_equipment').collapse('hide');
 
     $('#equipment_search').submit();
     

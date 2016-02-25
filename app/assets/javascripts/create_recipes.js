@@ -5,7 +5,7 @@ $(function(){
 
   function closeCollapsible(){
 
-    $('#collapse_recipe').collapse('hide');
+    $('#collapsible_recipe').collapse('hide');
 
     $('#recipes_search').submit();
 

@@ -12,8 +12,8 @@ class InventoryManagementController < ApplicationController
     @equipment = Equipment.search(params[:search]).page(params[:page]).per(50)
 
     # ingredients and equipment to add to recipe
-    @ingredients_for_recipe = [];
-    @equipment_for_recipe = [];
+    @ingredients_for_recipe = []
+    @equipment_for_recipe = []
 
     # add ingredients that have previously been added
     if params.has_key?(:existing_ingredients_code_for_recipe)
@@ -29,6 +29,8 @@ class InventoryManagementController < ApplicationController
 
 
   end
+
+
 
   def create_recipe
 
