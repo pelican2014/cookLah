@@ -1,17 +1,30 @@
-<%= form_for :ingredient ,url: inventory_management_create_ingredient_path, method: :post, html: {id: 'create_ingredient_form'}, remote: true do |f| %>
+<!-- create new ingredient -->
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  Create New Ingredient
+</button>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
 
-  <%= f.label :price %>
-  <%= f.text_field :price  %>
+<div class="collapse" id="collapseExample">
+  <div class="well">
 
-  <%= f.label :unit %>
-  <%= f.text_field :unit %>
+  	<% # create new ingredient form %>
+    <%= form_for :ingredient ,url: inventory_management_create_ingredient_path, method: :post, html: {id: 'create_ingredient_form'}, remote: true do |f| %>
 
-  <%= f.label :interval %>
-  <%= f.text_field :interval %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
 
-  <%= f.submit 'Create', name: nil %>
+    <%= f.label :price %>
+    <%= f.text_field :price  %>
 
-<% end %>
+    <%= f.label :unit %>
+    <%= f.text_field :unit %>
+
+    <%= f.label :interval %>
+    <%= f.text_field :interval %>
+
+    <%= f.submit 'Create', name: nil %>
+
+    <% end %>
+
+  </div>
+</div>

@@ -1,3 +1,7 @@
 // javascript response after ajax requests
+
+// reload create new ingredient section
+// $('#create_new_ingredient_section').html('<%= escape_javascript(render 'inventory_management/partials/create_ingredient') %>');
+
 // reload search results partial
-$("#ingredients_search_results").html("<%= escape_javascript(render("inventory_management/partials/ingredients_search_results")) %>");
+$('#ingredients_search_results').html('<%= escape_javascript(render 'inventory_management/partials/ingredients_search_results') %>');

@@ -20,10 +20,13 @@
 //  include JavaScript files
 //= utils.js
 
-//= ingredients_equipment_search_common.js
+//= inventory_search_common.js
 
 //= ingredients_search.js
 //= create_ingredient.js
 
 //= equipment_search.js
 //= create_equipment.js
+
+//= recipes_search.js
+//= create_recipes.js

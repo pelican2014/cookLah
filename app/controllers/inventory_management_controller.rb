@@ -4,11 +4,13 @@ class InventoryManagementController < ApplicationController
 
 
   def recipes
+    @recipes = Recipe.search(params[:search]).page(params[:page]).per(50)
   end
 
 
+
   def ingredients
-    @ingredients = Ingredient.search(params[:search]).page(params[:page]).per(20)
+    @ingredients = Ingredient.search(params[:search]).page(params[:page]).per(50)
   end
 
   def create_ingredient
@@ -24,7 +26,7 @@ class InventoryManagementController < ApplicationController
 
 
   def equipment
-    @equipment = Equipment.search(params[:search]).page(params[:page]).per(20)
+    @equipment = Equipment.search(params[:search]).page(params[:page]).per(50)
   end
 
   def create_equipment

@@ -1,2 +1,14 @@
-<h1>InventoryManagement#recipes</h1>
-<p>Find me in app/views/inventory_management/recipes.html.erb</p>
+<button id='create_new_recipe_button'>Create New Recipe</button>
+<%= form_tag inventory_management_recipes_path, :method => 'get', :id => 'recipes_search' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag 'Search', name: nil %>
+  </p>
+  <div id='recipes_search_results'>
+  	<%= render '/inventory_management/partials/ingredients_search_results' %>
+  </div>
+<% end %>
+
+<div id='create_new_recipe_dialog'>
+  <%= render '/inventory_management/partials/create_ingredient' %>
+</div>
