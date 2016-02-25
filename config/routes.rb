@@ -5,8 +5,10 @@ Rails.application.routes.draw do
 
   get 'inventory_management/equipment'
 
-  # post request (form submit) to inventory_management_create_ingredients_path (inventory_management/ingredients -> unused)
-  post 'inventory_management/create_ingredients', to: 'inventory_management#create_ingredients', as: 'inventory_management_create_ingredients'
+  # create ingredient
+  post 'inventory_management/create_ingredient', to: 'inventory_management#create_ingredient', as: 'inventory_management_create_ingredient'
+  # create equipment
+  post 'inventory_management/create_equipment', to: 'inventory_management#create_equipment', as: 'inventory_management_create_equipment'
 
 
   devise_for :users

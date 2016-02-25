@@ -18,5 +18,12 @@
 //= require bootstrap.min
 
 //  include JavaScript files
+//= utils.js
+
+//= ingredients_equipment_search_common.js
+
 //= ingredients_search.js
-//= create_ingredients.js
+//= create_ingredient.js
+
+//= equipment_search.js
+//= create_equipment.js

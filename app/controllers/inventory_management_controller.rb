@@ -11,7 +11,7 @@ class InventoryManagementController < ApplicationController
     @ingredients = Ingredient.search(params[:search]).page(params[:page]).per(20)
   end
 
-  def create_ingredients
+  def create_ingredient
 
 	  # create new ingredient record
     ingredient = Ingredient.new(ingredient_params)
@@ -24,12 +24,27 @@ class InventoryManagementController < ApplicationController
 
 
   def equipment
+    @equipment = Equipment.search(params[:search]).page(params[:page]).per(20)
   end
 
+  def create_equipment
+
+    # create new equipment record
+    equipment = Equipment.new(equipment_params)
+    equipment.save
+
+
+    render nothing: true
+    
+  end
 
   private
     def ingredient_params
       params.require(:ingredient).permit(:name, :price, :unit, :interval)
+    end
+
+    def equipment_params
+      params.require(:equipment_singular).permit(:name, :price)
     end
 
 end

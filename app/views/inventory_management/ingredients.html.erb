@@ -1,4 +1,4 @@
-<button id='create_new_ingredients_button'>Create New Ingredient(s)</button>
+<button id='create_new_ingredient_button'>Create New Ingredient(s)</button>
 <%= form_tag inventory_management_ingredients_path, :method => 'get', :id => 'ingredients_search' do %>
   <p>
     <%= text_field_tag :search, params[:search] %>
@@ -9,6 +9,6 @@
   </div>
 <% end %>
 
-<div id='create_new_ingredients_dialog'>
-  <%= render '/inventory_management/partials/create_ingredients' %>
+<div id='create_new_ingredient_dialog'>
+  <%= render '/inventory_management/partials/create_ingredient' %>
 </div>
