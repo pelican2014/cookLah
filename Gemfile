@@ -39,8 +39,6 @@ gem 'devise', '~> 3.5.6'
 gem 'nokogiri', '~> 1.6.7'
 # A Scope & Engine based, clean, powerful, customizable and sophisticated paginator for modern web app frameworks and ORMs
 gem 'kaminari', '~> 0.16.3'
-# jQuery UI for the Rails asset pipeline
-gem 'jquery-ui-rails', '~> 5.0.5'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

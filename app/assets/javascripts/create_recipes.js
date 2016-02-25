@@ -1,30 +1,13 @@
 $(function(){
 
-  // configure dialog
-  $('#create_new_ingredient_dialog').dialog({
-    autoOpen: false,
-    title: 'Add New Ingredient',
-    autoResize: true,
-    modal: true,
-  });
+  // close collapsible and trigger search to update ingredients search results
+  $('#create_recipe_form').on('ajax:success', closeCollapsible);
 
-  // show dialog on click of button
-  $('#create_new_ingredient_button').click(showDialog);
+  function closeCollapsible(){
 
-  // function for showing dialog
-  function showDialog(){
-    $('#create_new_ingredient_dialog').dialog('open');
-    return false;
+    $('#collapse_recipe').collapse('hide');
+
+    $('#recipes_search').submit();
+
   }
-
-  $('#create_ingredient_form').on('ajax:success', closeDialog);
-
-  // ajax response after form is submitted
-  function closeDialog(){
-    // close dialog
-    $('#create_new_ingredient_dialog').dialog('close');
-    // trigger search to update ingredients search results
-    $('#ingredients_search').submit();
-  }
-
 });
