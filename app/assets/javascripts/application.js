@@ -29,3 +29,5 @@
 
 //= recipes_search.js
 //= create_recipes.js
+
+//= add_ingredient_to_recipe.js

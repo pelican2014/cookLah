@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'inventory_management/recipes'
+  post 'inventory_management/recipes'
 
   get 'inventory_management/ingredients'
 

@@ -6,30 +6,9 @@
 <div class="collapse" id="collapsible_recipe">
   <div class="well">
 
-  	<% # enter ingredient code to add ingredient %>
-    <%= form_tag inventory_management_recipes_path, method: 'get', remote: false do %>
-    <!-- ingredient code field -->
-    <p>
-      <%= label_tag :ingredient_code, 'Enter Ingredient Code to Add to Recipe' %>
-      <%= text_field_tag :ingredient_code %>
-
-      <% # submit existing ingredients code in hidden field %>
-	  <% @ingredients_for_recipe.each do |ingredient| %>
-	    <%= hidden_field_tag 'existing_ingredients_code_for_recipe[]', ingredient.code %>
-	  <% end %>
-
-      <% # name is only nil here and 'submit' elsewhere for recipes -> create [] only when first open or add ingre %>
-      <%= submit_tag 'Enter', name: nil %>
-    </p>
-    <% end %>
-
-  	<% # table of ingredients to add to recipe %>
-  	<div id="ingredients_table_for_recipe">
-  	  <%= render '/inventory_management/partials/recipe_modal/ingredients_table_for_recipe' %>
+  	<div id="recipe_ingredients_section">
+  	  <%= render '/inventory_management/partials/recipe_modal/recipe_ingredients_section' %>
   	</div>
-  	<% # button and modal associated with finding ingredients %>
-	<%= render '/inventory_management/partials/recipe_modal/finding_ingredients' %>
-
 
 	<!-- table of equipment to add to recipe -->
 

@@ -18,7 +18,8 @@ class InventoryManagementController < ApplicationController
     # add ingredients that have previously been added
     if params.has_key?(:existing_ingredients_code_for_recipe)
       params[:existing_ingredients_code_for_recipe].each do |code|
-        @ingredients_for_recipe << (Ingredient.find_by code: code)
+        ingredient = Ingredient.find_by code: code
+        @ingredients_for_recipe << ingredient if !(ingredient.nil?)
       end
     end
 

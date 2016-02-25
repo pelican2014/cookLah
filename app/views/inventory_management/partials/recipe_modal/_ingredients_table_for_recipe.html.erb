@@ -8,15 +8,13 @@
       <th>Price</th>
       <th>Unit</th>
     </tr>
-    <% if instance_variable_defined? :@ingredients_for_recipe %>
-      <% @ingredients_for_recipe.each do |ingredient| %>
-        <tr>
-          <td><%= ingredient.code %></td>
-          <td><%= ingredient.name %></td>
-          <td><%= ingredient.price %></td>
-          <td><%= ingredient.unit %></td>
-        </tr>
-      <% end %>
+    <% @ingredients_for_recipe.each do |ingredient| %>
+      <tr>
+        <td><%= ingredient.code %></td>
+        <td><%= ingredient.name %></td>
+        <td><%= ingredient.price %></td>
+        <td><%= ingredient.unit %></td>
+      </tr>
     <% end %>
   </table>
 </div>
