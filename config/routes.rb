@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   post 'inventory_management/create_ingredient', to: 'inventory_management#create_ingredient', as: 'inventory_management_create_ingredient'
   # create equipment
   post 'inventory_management/create_equipment', to: 'inventory_management#create_equipment', as: 'inventory_management_create_equipment'
+  # create recipe
+  post 'inventory_management/create_recipe', to: 'inventory_management#create_recipe', as: 'inventory_management_create_recipe'
 
 
   devise_for :users

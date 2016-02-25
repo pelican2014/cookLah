@@ -10,4 +10,5 @@ $(function(){
     $('#recipes_search').submit();
 
   }
+
 });

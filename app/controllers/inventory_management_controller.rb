@@ -5,8 +5,39 @@ class InventoryManagementController < ApplicationController
 
   def recipes
     @recipes = Recipe.search(params[:search]).page(params[:page]).per(50)
+
+    # @ingredients and @equipment store search results for ingredients and equipment respectively
+    # in the partials rendered within recipes
+    @ingredients = Ingredient.search(params[:search]).page(params[:page]).per(50)
+    @equipment = Equipment.search(params[:search]).page(params[:page]).per(50)
+
+    # ingredients and equipment to add to recipe
+    @ingredients_for_recipe = [];
+    @equipment_for_recipe = [];
+
+    # add ingredients that have previously been added
+    if params.has_key?(:existing_ingredients_code_for_recipe)
+      params[:existing_ingredients_code_for_recipe].each do |code|
+        @ingredients_for_recipe << (Ingredient.find_by code: code)
+      end
+    end
+
+    # add the last entered ingredient
+    if params.has_key?(:ingredient_code)
+      @ingredients_for_recipe << (Ingredient.find_by code: params[:ingredient_code])
+    end
+
+
   end
 
+  def create_recipe
+
+
+
+
+    render nothing: true
+    
+  end
 
 
   def ingredients

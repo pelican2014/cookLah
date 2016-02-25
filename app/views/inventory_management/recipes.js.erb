@@ -1,3 +1,7 @@
 // javascript response after ajax requests
-// reload search results partial
+// reload recipes search results partial
 $('#recipes_search_results').html('<%= escape_javascript(render 'inventory_management/partials/recipes_search_results') %>');
+// roload ingredients search results partial in recipe creator
+$('#ingredients_search_results').html('<%= escape_javascript(render 'inventory_management/partials/ingredients_search_results') %>');
+// update table of ingredients to add to recipe after submitting ingredient code
+$('#ingredients_table_for_recipe').html('<%= escape_javascript(render 'inventory_management/partials/recipe_modal/ingredients_table_for_recipe') %>');

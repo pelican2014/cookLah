@@ -1,14 +1,18 @@
-<button id='create_new_recipe_button'>Create New Recipe</button>
+<!-- search recipes -->
 <%= form_tag inventory_management_recipes_path, :method => 'get', :id => 'recipes_search' do %>
+  <!-- search field -->
   <p>
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag 'Search', name: nil %>
   </p>
-  <div id='recipes_search_results'>
-  	<%= render '/inventory_management/partials/ingredients_search_results' %>
-  </div>
 <% end %>
 
-<div id='create_new_recipe_dialog'>
-  <%= render '/inventory_management/partials/create_ingredient' %>
+<!-- search results -->
+<div id='recipes_search_results'>
+  <%= render '/inventory_management/partials/recipes_search_results' %>
+</div>
+
+<!-- create new recipe section -->
+<div id='create_new_recipe_section'>
+  <%= render '/inventory_management/partials/create_recipe' %>
 </div>

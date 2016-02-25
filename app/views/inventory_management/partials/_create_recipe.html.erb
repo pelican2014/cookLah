@@ -1,17 +1,45 @@
-<%= form_for :ingredient ,url: inventory_management_create_ingredient_path, method: :post, html: {id: 'create_ingredient_form'}, remote: true do |f| %>
+<!-- create new recipe -->
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsible_recipe" aria-expanded="false" aria-controls="collapsible_recipe">
+  Create New Recipe
+</button>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<div class="collapse" id="collapsible_recipe">
+  <div class="well">
 
-  <%= f.label :price %>
-  <%= f.text_field :price  %>
+  	<% # enter ingredient code to add ingredient %>
+    <%= form_tag inventory_management_recipes_path, method: 'get', remote: false do %>
+    <!-- ingredient code field -->
+    <p>
+      <%= label_tag :ingredient_code, 'Enter Ingredient Code to Add to Recipe' %>
+      <%= text_field_tag :ingredient_code %>
 
-  <%= f.label :unit %>
-  <%= f.text_field :unit %>
+      <% # submit existing ingredients code in hidden field %>
+      <% @ingredients_for_recipe.each do |ingredient| %>
+        <%= hidden_field_tag 'existing_ingredients_code_for_recipe[]', ingredient.code %>
+      <% end %>
 
-  <%= f.label :interval %>
-  <%= f.text_field :interval %>
+      <%= submit_tag 'Enter', name: nil %>
+    </p>
+    <% end %>
 
-  <%= f.submit 'Create', name: nil %>
+  	<% # table of ingredients to add to recipe %>
+  	<div id="ingredients_table_for_recipe">
+  	  <%= render '/inventory_management/partials/recipe_modal/ingredients_table_for_recipe' %>
+  	</div>
+  	<% # button and modal associated with finding ingredients %>
+	<%= render '/inventory_management/partials/recipe_modal/finding_ingredients' %>
 
-<% end %>
+
+	<!-- table of equipment to add to recipe -->
+
+	<%= form_for :recipe ,url: inventory_management_create_recipe_path, method: :post, html: {id: 'create_recipe_form'}, remote: true do |f| %>
+
+	  <%= f.label :name %>
+	  <%= f.text_field :name %>
+
+	  <%= f.submit 'Create', name: nil %>
+
+	<% end %>
+
+  </div>
+</div>
