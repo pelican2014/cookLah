@@ -1,0 +1,33 @@
+<% # enter equipment code to add equipment %>
+<%= form_tag inventory_management_recipes_path, method: 'post', remote: true do %>
+  <!-- equipment code field -->
+  <div class="well">
+    <h4>Enter Equipment Code to add to recipe. Choose either MUST HAVE or WE SELL for each equipment.</h4><br />
+    <p>Click Find Equipment below to look for the code of equipment or create a new equipment if not found.</p>
+    <p>MUST HAVE means that we will remind customer that they must have the required equipment to cook, while WE SELL means that we can provide the given equipment with an added cost component (the price of equipment).</p>
+    <p>You can set the price of equipment that we do not provide to be 0.</p>
+  </div>
+  <%= label_tag :equipment_code, 'Equipment Code' %>
+  <%= text_field_tag :equipment_code %>
+
+  <%= label_tag :equipment_type, 'Equipment Type'%>
+  <%= select_tag :equipment_type, options_for_select(['MUST HAVE', 'WE SELL']) %>
+
+  <% # note: need to update this section after AJAX call %>
+  <% # as otherwise the number of hidden fields would remain zero %>
+  <% # and the code of newly added ingredients would not be captureed %>
+  <% @ingredients_for_recipe[:ingredients].each do |ingredient| %>
+    <%= hidden_field_tag 'existing_ingredients_code_for_recipe[]', ingredient.code %>
+  <% end %>
+  <% @ingredients_for_recipe[:quantities].each do |quantity| %>
+    <%= hidden_field_tag 'existing_ingredients_quantity_for_recipe[]', quantity %>
+  <% end %>
+  <% @equipment_for_recipe[:equipment].each do |equipment| %>
+    <%= hidden_field_tag 'existing_equipment_code_for_recipe[]', equipment.code %>
+  <% end %>
+  <% @equipment_for_recipe[:types].each do |type| %>
+    <%= hidden_field_tag 'existing_equipment_type_for_recipe[]', type %>
+  <% end %>
+
+  <%= submit_tag 'Add', name: nil, class: 'btn btn-default' %>
+<% end %>

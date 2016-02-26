@@ -1,0 +1,22 @@
+<!-- table of ingredients to add to recipe -->
+<div class="panel panel-default">
+  <div class="panel-heading">Ingredients for Recipe</div>
+  <table class="table">
+    <tr>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Unit</th>
+      <th>Quantity</th>
+    </tr>
+    <% 1.upto(@ingredients_for_recipe[:ingredients].length) do |i| %>
+      <tr>
+        <td><%= @ingredients_for_recipe[:ingredients][i-1].code %></td>
+        <td><%= @ingredients_for_recipe[:ingredients][i-1].name %></td>
+        <td><%= @ingredients_for_recipe[:ingredients][i-1].price %></td>
+        <td><%= @ingredients_for_recipe[:ingredients][i-1].unit %></td>
+        <td><%= @ingredients_for_recipe[:quantities][i-1] %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

@@ -1,0 +1,52 @@
+<!-- create new recipe -->
+<button class="btn btn-default" type="button" data-toggle="modal" data-target="#create_recipe_ingredients_and_equipment" aria-expanded="false" aria-controls="create_recipe_form_ingredients_and_equipment">
+  Create New Recipe
+</button>
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="create_recipe_form_ingredients_and_equipmentLabel" id="create_recipe_ingredients_and_equipment">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+
+  	    <!-- ingredients section -->
+  	    <div id="recipe_ingredients_section">
+	      <% # enter ingredient code and quantity to add ingredient %>
+	      <div id="add_ingredient_to_recipe">
+	        <%= render '/inventory_management/partials/add_ingredient_to_recipe' %>
+	      </div>
+	      <div id="ingredients_table_for_recipe">
+		    <% # table of ingredients to add to recipe %>
+		    <%= render '/inventory_management/partials/ingredients_table_for_recipe' %>
+	      </div>
+
+	      <% # button and modal associated with finding ingredients %>
+	      <%= render '/inventory_management/partials/recipe_modal/finding_ingredients' %>
+
+  	    </div>
+
+
+	    <!-- equipment section -->
+	    <div id="recipe_equipment_section">
+	      <% # enter equipment code to add equipment %>
+	      <div id="add_equipment_to_recipe">
+		    <%= render '/inventory_management/partials/add_equipment_to_recipe' %>
+	      </div>
+	      <div id="equipment_table_for_recipe">
+		    <% # table of equipment to add to recipe %>
+		    <%= render '/inventory_management/partials/equipment_table_for_recipe' %>
+	      </div>
+
+	      <% # button and modal associated with finding equipment %>
+	      <%= render '/inventory_management/partials/recipe_modal/finding_equipment' %>
+
+  	    </div>
+
+  	    <!-- continue to the next section -->
+  	    <div class='modal-footer' id="create_recipe_part_one_continue">
+  	  	  <%= render '/inventory_management/partials/create_recipe_part_one_continue' %>
+	    </div>
+
+	  </div>
+	</div>
+  </div>
+</div>

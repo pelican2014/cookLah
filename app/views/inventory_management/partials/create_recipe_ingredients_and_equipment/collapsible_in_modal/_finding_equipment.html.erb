@@ -1,0 +1,23 @@
+<!-- button and associated modal for finding equipment -->
+<button type="button" class="btn btn-info" id="search_or_create_equipment_button" data-toggle="collapse" data-target="#search_or_create_equipment">Find Equipment</button>
+
+<hr />
+
+<div class="collapse" id="search_or_create_equipment">
+  <div class="well">
+    
+    <!-- search equipment -->
+    <div id="equipment_search_fields">
+      <%= render '/inventory_management/partials/create_recipe_ingredients_and_equipment/collapsible_in_modal/equipment_search_fields' %>
+    </div>
+
+    <!-- equipment search results -->
+    <div id="equipment_search_results">
+      <%= render '/inventory_management/partials/equipment_search_results' %>
+    </div>
+
+    <!-- create equipment -->
+    <%= render '/inventory_management/partials/create_equipment' %>
+
+  </div>
+</div>

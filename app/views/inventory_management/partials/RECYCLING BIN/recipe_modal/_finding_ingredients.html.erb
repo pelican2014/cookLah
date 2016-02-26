@@ -1,0 +1,23 @@
+<!-- button and associated modal for finding ingredients -->
+<button type="button" class="btn btn-info" id="search_or_create_ingredients_button" data-toggle="collapse" data-target="#search_or_create_ingredients">Find Ingredients</button>
+
+<hr />
+
+<div class="collapse" id="search_or_create_ingredients">
+
+  <div class="well">
+    <!-- search ingredients -->
+    <div id="ingredients_search_fields">
+      <%= render '/inventory_management/partials/recipe_modal/ingredients_search_fields' %>
+    </div>
+
+    <!-- ingredients search results -->
+    <div id="ingredients_search_results">
+      <%= render '/inventory_management/partials/recipe_modal/ingredients_search_results' %>
+    </div>
+
+    <!-- create ingredient -->
+    <%= render '/inventory_management/partials/recipe_modal/create_ingredient' %>
+  </div>
+
+</div>
