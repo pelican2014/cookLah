@@ -27,4 +27,4 @@
 //= equipment_search.js
 //= create_equipment.js
 
-//= create_recipes.js
+//= recipes_search.js

@@ -1,0 +1,73 @@
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="well" style="background-color: white;">
+
+      <div class="page-header"><h2><%= @recipe.name %></h2></div>
+
+      <!-- ingredient list -->
+      <div class="well">
+      	<div class="page_header"><h4>Ingredients</h4></div>
+	    <table class="table">
+	      <tr>
+	        <th>Code</th>
+	        <th>Name</th>
+	        <th>Price</th>
+	        <th>Unit</th>
+	        <th>Quantity</th>
+	      </tr>
+	      <% 1.upto(@ingredients.length) do |i| %>
+	        <tr>
+	          <td><%= @ingredients[i-1].code %></td>
+	          <td><%= @ingredients[i-1].name %></td>
+	          <td><%= @ingredients[i-1].price %></td>
+	          <td><%= @ingredients[i-1].unit %></td>
+	          <td><%= @quantities[i-1] %></td>
+	        </tr>
+	      <% end %>
+	    </table>
+      </div>
+
+      <!-- equipment list -->
+      <div class="well">
+      	<div class="page_header"><h4>Equipment</h4></div>
+	    <table class="table">
+	      <tr>
+	        <th>Code</th>
+	        <th>Name</th>
+	        <th>Price</th>
+	        <th>Type</th>
+	      </tr>
+	      <% 1.upto(@equipment.length) do |i| %>
+	        <tr>
+	          <td><%= @equipment[i-1].code %></td>
+	          <td><%= @equipment[i-1].name %></td>
+	          <td><%= @equipment[i-1].price %></td>
+	          <td><%= @types[i-1] %></td>
+	        </tr>
+	      <% end %>
+	    </table>
+      </div>
+
+      <!-- table of cooking instructions -->
+      <div class="well">
+      	<div class="page_header"><h4>Cooking Instructions</h4></div>
+		  <table class="table">
+		    <tr>
+		      <th>No.</th>
+		      <th>Instruction</th>
+		    </tr>
+		    <% @recipe.instructions.each_with_index do |step, i| %>
+		      <tr>
+		        <td><h4><%= i + 1 %></h4></td>
+		        <td><%= step %></td>
+		      </tr>
+		    <% end %>
+		  </table>
+		</div>
+	  </div>
+
+    </div>
+  </div>
+  <div class="col-md-2"></div>
+</div>

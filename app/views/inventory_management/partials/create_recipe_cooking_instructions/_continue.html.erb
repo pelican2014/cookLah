@@ -1,0 +1,12 @@
+<%= form_tag inventory_management_create_recipe_configuration_path, method: 'post', remote: false do %>
+
+  <% # submit info about alr created cooking instructions in hidden field %>
+  <% @cooking_instructions.each do |step| %>
+    <%= hidden_field_tag 'cooking_instructions[]', step %>
+  <% end %>
+
+  <%= hidden_field_tag 'recipe_ingredients_and_equipment', @recipe_ingredients_and_equipment %>
+
+  <%= submit_tag 'Continue', name: nil, class: 'btn btn-success' %>
+
+<% end %>

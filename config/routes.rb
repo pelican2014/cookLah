@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'inventory_management/recipes'
   post 'inventory_management/recipes'
+  get 'inventory_management/recipes/:id', to: 'inventory_management#read_recipe', as: 'inventory_management_read_recipe'
 
   get 'inventory_management/ingredients'
 
@@ -11,8 +12,14 @@ Rails.application.routes.draw do
   # create equipment
   post 'inventory_management/create_equipment', to: 'inventory_management#create_equipment', as: 'inventory_management_create_equipment'
   
-  # create recipe cooking instructions (part two of recipe creation form)
+  # create recipe cooking instructions (part two of recipe creation)
   post 'inventory_management/create_recipe_cooking_instructions', to: 'inventory_management#create_recipe_cooking_instructions', as: 'inventory_management_create_recipe_cooking_instructions'
+
+  # recipe configuration (part three of recipe creation)
+  post 'inventory_management/create_recipe_configuration', to: 'inventory_management#create_recipe_configuration', as: 'inventory_management_create_recipe_configuration'
+
+  # create recipe (part four of recipe creation)
+  post 'inventory_management/create_recipe', to: 'inventory_management#create_recipe', as: 'inventory_management_create_recipe'
 
 
   devise_for :users

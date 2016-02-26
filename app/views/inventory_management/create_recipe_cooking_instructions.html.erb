@@ -22,19 +22,9 @@
       </div>
 
       <% # Continue %>
-      <%= form_tag inventory_management_create_recipe_cooking_instructions_path, method: 'post', remote: false do %>
-
-		<% # submit info about alr created cooking instructions in hidden field %>
-		<% @cooking_instructions.each do |step| %>
-		  <%= hidden_field_tag 'existing_steps[]', step %>
-		<% end %>
-
-		<%= hidden_field_tag 'recipe_ingredients_and_equipment', @recipe_ingredients_and_equipment %>
-
-		<%= submit_tag 'Continue', name: nil, class: 'btn btn-success' %>
-
-      <% end %>
-
+      <div id="recipe_creation_cooking_instructions_continue">
+        <%= render '/inventory_management/partials/create_recipe_cooking_instructions/continue' %>
+      </div>
 
     </div>
   </div>

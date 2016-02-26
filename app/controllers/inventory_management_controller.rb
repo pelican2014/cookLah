@@ -79,9 +79,10 @@ class InventoryManagementController < ApplicationController
     # store information about ingredients and equipment
     @recipe_ingredients_and_equipment = params[:recipe_ingredients_and_equipment]
 
-    # convert to byte stream when first retrieved
+    # convert to string when first retrieved
     if !(@recipe_ingredients_and_equipment.is_a?(String))
-      @recipe_ingredients_and_equipment = Marshal.dump(@recipe_ingredients_and_equipment)
+      require 'json'
+      @recipe_ingredients_and_equipment = @recipe_ingredients_and_equipment.to_json
     end
 
 
@@ -102,6 +103,96 @@ class InventoryManagementController < ApplicationController
       @cooking_instructions << new_step
     end
     
+  end
+
+
+  def create_recipe_configuration
+    # store information about ingredients, equipment and cooking instructions
+    @recipe_ingredients_and_equipment = params[:recipe_ingredients_and_equipment]
+    @cooking_instructions = params[:cooking_instructions]
+
+    # convert @cooking_instructions to string when first retrieved
+    if !(@cooking_instructions.is_a?(String))
+      require 'json'
+      @cooking_instructions = @cooking_instructions.to_json
+    end
+
+  end
+
+
+  def create_recipe
+    require 'json'
+
+    # $5.00 is the starting price
+    price = 5.0
+
+    recipe_ingredients_and_equipment = JSON.parse(params[:recipe_ingredients_and_equipment])
+
+    ingredients = {}
+    ingredient_code_arr = recipe_ingredients_and_equipment['ingredients']['code']
+    quantity_arr = recipe_ingredients_and_equipment['ingredients']['quantity']
+
+    1.upto(ingredient_code_arr.length) do |i|
+      # ingredients store a hash {code => quantity}
+      ingredients[ingredient_code_arr[i-1]] = quantity_arr[i-1]
+
+      # sum up ingredient price
+      ingredient = Ingredient.find_by code: ingredient_code_arr[i-1]
+      redirect_to homepage_index_path if ingredient.nil? # shouldn't happen
+      price += ingredient.price * quantity_arr[i-1].to_f
+
+    end
+
+    equipment = {}
+    equipment_code_arr = recipe_ingredients_and_equipment['equipment']['code']
+    type_arr = recipe_ingredients_and_equipment['equipment']['type']
+    1.upto(equipment_code_arr.length) do |i|
+      # equipment store a hash {code => type}
+      equipment[equipment_code_arr[i-1]] = type_arr[i-1]
+
+      # sum up equipment price
+      equipment_singular = Equipment.find_by code: equipment_code_arr[i-1]
+      redirect_to homepage_index_path if equipment_singular.nil? # shouldn't happen
+      price += equipment_singular.price
+    end
+
+
+    cooking_instructions = JSON.parse(params[:cooking_instructions])
+
+
+    recipe = Recipe.new(recipe_params)
+    recipe.price = price
+    recipe.ingredients = ingredients
+    recipe.equipment = equipment
+    recipe.instructions = cooking_instructions
+    recipe.save
+    recipe.code = 'RC' + (recipe.id + 300).to_s.rjust(3, '0')
+    recipe.save
+
+
+    redirect_to inventory_management_recipes_path
+
+  end
+
+
+  def read_recipe
+
+    @recipe = Recipe.find(params[:id])
+
+    @ingredients = []
+    @quantities = []
+    @recipe.ingredients.each do |code, quantity|
+      @ingredients << (Ingredient.find_by code: code)
+      @quantities << quantity
+    end
+
+    @equipment = []
+    @types = []
+    @recipe.equipment.each do |code, type|
+      @equipment << (Equipment.find_by code: code)
+      @types << type
+    end
+
   end
 
 
@@ -153,6 +244,10 @@ class InventoryManagementController < ApplicationController
 
     def equipment_params
       params.require(:equipment_singular).permit(:name, :price)
+    end
+
+    def recipe_params
+      params.permit(:name, :course_and_region, :symbol, :dietary_restriction, :cooking_time, :level_of_difficulty)
     end
 
 end
