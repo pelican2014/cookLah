@@ -40,25 +40,9 @@
 
   	  </div>
 
-  	  <div class='modal-footer'>
-		<%= form_for :recipe ,url: inventory_management_create_recipe_cooking_instructions_path, method: :post, html: {id: 'create_recipe_form_part_one'}, remote: false do |f| %>
-
-		  <% @ingredients_for_recipe[:ingredients].each do |ingredient| %>
-		    <%= hidden_field_tag 'recipe[ingredients][code][]', ingredient.code %>
-		  <% end %>
-		  <% @ingredients_for_recipe[:quantities].each do |quantity| %>
-		    <%= hidden_field_tag 'recipe[ingredients][quantity][]', quantity %>
-		  <% end %>
-		  <% @equipment_for_recipe[:equipment].each do |equipment| %>
-		    <%= hidden_field_tag 'recipe[equipment][code][]', equipment.code %>
-		  <% end %>
-		  <% @equipment_for_recipe[:types].each do |type| %>
-		    <%= hidden_field_tag 'recipe[equipment][type][]', type %>
-		  <% end %>
-
-		  <%= f.submit 'Continue', name: 'continue', class: 'btn btn-primary' %>
-
-		<% end %>
+  	  <!-- continue to the next section -->
+  	  <div class='modal-footer' id="create_recipe_form_part_one_continue_form">
+  	  	<%= render '/inventory_management/partials/create_recipe_form_part_one_continue_form' %>
 	  </div>
 
 	</div>

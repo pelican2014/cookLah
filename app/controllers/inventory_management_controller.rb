@@ -76,8 +76,31 @@ class InventoryManagementController < ApplicationController
 
 
   def create_recipe_cooking_instructions
+    # store information about ingredients and equipment
+    @recipe_ingredients_and_equipment = params[:recipe_ingredients_and_equipment]
 
-    
+    # convert to byte stream when first retrieved
+    if !(@recipe_ingredients_and_equipment.is_a?(String))
+      @recipe_ingredients_and_equipment = Marshal.dump(@recipe_ingredients_and_equipment)
+    end
+
+
+    # create array to store cooking steps
+    @cooking_instructions = []
+
+    # retrieve information about previously added steps
+    existing_steps = params[:existing_steps]
+    if !(existing_steps.nil?)
+      existing_steps.each do |step|
+        @cooking_instructions << step
+      end
+    end
+
+    # add new cooking instruction
+    new_step = params[:new_step]
+    if !(new_step.nil?)
+      @cooking_instructions << new_step
+    end
     
   end
 

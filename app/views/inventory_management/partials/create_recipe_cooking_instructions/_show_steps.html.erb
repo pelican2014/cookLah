@@ -1,0 +1,17 @@
+<div class="well">
+
+  <!-- table of cooking instructions -->
+  <table class="table">
+    <tr>
+      <th>No.</th>
+      <th>Instruction</th>
+    </tr>
+    <% @cooking_instructions.each_with_index do |step, i| %>
+      <tr>
+        <td><h4><%= i + 1 %></h4></td>
+        <td><%= step %></td>
+      </tr>
+    <% end %>
+  </table>
+
+</div>

@@ -31,3 +31,6 @@ $('#ingredients_search_fields').html('<%= escape_javascript(render '/inventory_m
 $('#add_equipment_to_recipe_form_section').html('<%= escape_javascript(render '/inventory_management/partials/add_equipment_to_recipe_form_section') %>');
 // reload equipment search fields partial
 $('#equipment_search_fields').html('<%= escape_javascript(render '/inventory_management/partials/recipe_modal/equipment_search_fields') %>');
+
+// reload the 'continue to the next section' button
+$('#create_recipe_form_part_one_continue_form').html('<%= escape_javascript(render '/inventory_management/partials/create_recipe_form_part_one_continue_form') %>');

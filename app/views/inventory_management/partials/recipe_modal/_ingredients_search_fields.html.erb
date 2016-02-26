@@ -1,5 +1,5 @@
 <!-- search ingredients -->
-<%= form_tag inventory_management_recipes_path, :method => 'get', remote: true, id: 'ingredients_search_for_recipe' do %>
+<%= form_tag inventory_management_recipes_path, method: 'post', remote: true, id: 'ingredients_search_for_recipe' do %>
 
   <!-- search field -->
   <%= text_field_tag :search_ingredients, nil, class: 'form-control' %>
