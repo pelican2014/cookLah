@@ -8,12 +8,12 @@
       <th>Price</th>
       <th>Type</th>
     </tr>
-    <% 1.upto(@equipment_for_recipe.length) do |i| %>
+    <% 1.upto(@equipment_for_recipe[:equipment].length) do |i| %>
       <tr>
-        <td><%= @equipment_for_recipe[i-1].code %></td>
-        <td><%= @equipment_for_recipe[i-1].name %></td>
-        <td><%= @equipment_for_recipe[i-1].price %></td>
-        <td><%=  %></td>
+        <td><%= @equipment_for_recipe[:equipment][i-1].code %></td>
+        <td><%= @equipment_for_recipe[:equipment][i-1].name %></td>
+        <td><%= @equipment_for_recipe[:equipment][i-1].price %></td>
+        <td><%= @equipment_for_recipe[:types][i-1] %></td>
       </tr>
     <% end %>
   </table>

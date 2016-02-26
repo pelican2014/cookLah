@@ -9,13 +9,13 @@
       <th>Unit</th>
       <th>Quantity</th>
     </tr>
-    <% 1.upto(@ingredients_for_recipe.length) do |i| %>
+    <% 1.upto(@ingredients_for_recipe[:ingredients].length) do |i| %>
       <tr>
-        <td><%= @ingredients_for_recipe[i-1].code %></td>
-        <td><%= @ingredients_for_recipe[i-1].name %></td>
-        <td><%= @ingredients_for_recipe[i-1].price %></td>
-        <td><%= @ingredients_for_recipe[i-1].unit %></td>
-        <td><%=  %></td>
+        <td><%= @ingredients_for_recipe[:ingredients][i-1].code %></td>
+        <td><%= @ingredients_for_recipe[:ingredients][i-1].name %></td>
+        <td><%= @ingredients_for_recipe[:ingredients][i-1].price %></td>
+        <td><%= @ingredients_for_recipe[:ingredients][i-1].unit %></td>
+        <td><%= @ingredients_for_recipe[:quantities][i-1] %></td>
       </tr>
     <% end %>
   </table>

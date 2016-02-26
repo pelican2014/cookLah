@@ -1,5 +1,16 @@
 <!-- create new ingredient section -->
 <div id='create_new_ingredient_section'>
+
+  <div class="well">
+  	<h4>Notice</h4>
+	<p>When creating ingredient, there's a field called interval. Interval specifies how the customer can adjust amounts of ingredients.</p>
+	<p>For example, boneless chicken thign has the unit g. Say we normally provide 80g. We may set the interval to be 40. This way, the user will be able to customize based on a range of data points, namely 0g, 40g, 80g, 120g, 160g and so on.</p>
+	<p>Please calculate the unit price (can be tricky for g) before creating ingredient!</p>
+	<p>As a convention, please make all created ingredients lowercase.</p>
+	<p>Note that quantity is with respect to the unit of the ingredient specified during creation</p>
+	<p>Also, do not put things like 20g as the unit. Put g and calculate the unit price. Or else there will be rendering problems later on.</p>
+  </div>
+
   <%= render '/inventory_management/partials/recipe_modal/create_ingredient' %>
 </div>
 

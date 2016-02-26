@@ -17,11 +17,17 @@
     <% # note: need to update this section after AJAX call %>
     <% # as otherwise the number of hidden fields would remain zero %>
     <% # and the code of newly added ingredients would not be captureed %>
-    <% @ingredients_for_recipe.each do |ingredient| %>
+    <% @ingredients_for_recipe[:ingredients].each do |ingredient| %>
       <%= hidden_field_tag 'existing_ingredients_code_for_recipe[]', ingredient.code %>
     <% end %>
-    <% @equipment_for_recipe.each do |equipment| %>
+    <% @ingredients_for_recipe[:quantities].each do |quantity| %>
+      <%= hidden_field_tag 'existing_ingredients_quantity_for_recipe[]', quantity %>
+    <% end %>
+    <% @equipment_for_recipe[:equipment].each do |equipment| %>
       <%= hidden_field_tag 'existing_equipment_code_for_recipe[]', equipment.code %>
+    <% end %>
+    <% @equipment_for_recipe[:types].each do |type| %>
+      <%= hidden_field_tag 'existing_equipment_type_for_recipe[]', type %>
     <% end %>
 
     <%= submit_tag 'Add', name: nil %>

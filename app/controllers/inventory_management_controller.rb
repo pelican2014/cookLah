@@ -12,8 +12,8 @@ class InventoryManagementController < ApplicationController
     @equipment = Equipment.search(params[:search_equipment]).page(params[:page]).per(50)
 
     # ingredients and equipment to add to recipe
-    @ingredients_for_recipe = []
-    @equipment_for_recipe = []
+    @ingredients_for_recipe = {ingredients: [], quantities: []}
+    @equipment_for_recipe = {equipment: [], types: []}
 
 
 
@@ -21,14 +21,28 @@ class InventoryManagementController < ApplicationController
     if params.has_key?(:existing_ingredients_code_for_recipe)
       params[:existing_ingredients_code_for_recipe].each do |code|
         ingredient = Ingredient.find_by code: code
-        @ingredients_for_recipe << ingredient if !(ingredient.nil?)
+        @ingredients_for_recipe[:ingredients] << ingredient
       end
     end
-
     # add the last entered ingredient
     if params.has_key?(:ingredient_code)
       ingredient = Ingredient.find_by code: params[:ingredient_code]
-      @ingredients_for_recipe << ingredient if !(ingredient.nil?)
+      @ingredients_for_recipe[:ingredients] << ingredient if !(ingredient.nil?)
+    end
+
+    # add ingredients quantities that have previously been added
+    if params.has_key?(:existing_ingredients_quantity_for_recipe)
+      params[:existing_ingredients_quantity_for_recipe].each do |quantity|
+        @ingredients_for_recipe[:quantities] << quantity
+      end
+    end
+    # add the last entered ingredient quantity
+    if params.has_key?(:ingredient_quantity)
+      quantity_s = params[:ingredient_quantity]
+      if !(quantity_s.nil?)
+        quantity = (quantity_s.to_i != 0) ?  quantity_s.to_f : 1.0
+        @ingredients_for_recipe[:quantities] << quantity
+      end
     end
 
 
@@ -36,17 +50,25 @@ class InventoryManagementController < ApplicationController
     if params.has_key?(:existing_equipment_code_for_recipe)
       params[:existing_equipment_code_for_recipe].each do |code|
         equipment = Equipment.find_by code: code
-        @equipment_for_recipe << equipment if !(equipment.nil?)
+        @equipment_for_recipe[:equipment] << equipment if !(equipment.nil?)
       end
     end
-
     # add the last entered equipment
     if params.has_key?(:equipment_code)
         equipment = Equipment.find_by code: params[:equipment_code]
-      @equipment_for_recipe << equipment if !(equipment.nil?)
+      @equipment_for_recipe[:equipment] << equipment if !(equipment.nil?)
     end
 
-
+    # add equipment types that have previously been added
+    if params.has_key?(:existing_equipment_type_for_recipe)
+      params[:existing_equipment_type_for_recipe].each do |type|
+        @equipment_for_recipe[:types] << type
+      end
+    end
+    # add the last entered equipment type
+    if params.has_key?(:equipment_type)
+      @equipment_for_recipe[:types] << params[:equipment_type]
+    end
 
 
   end
@@ -63,21 +85,24 @@ class InventoryManagementController < ApplicationController
   end
 
 
+
   def ingredients
     @ingredients = Ingredient.search(params[:search]).page(params[:page]).per(50)
   end
 
   def create_ingredient
-
-	  # create new ingredient record
-    ingredient = Ingredient.new(ingredient_params)
-    ingredient.save
-    ingredient.code = 'IN' + (ingredient.id + 300).to_s.rjust(3, '0')
-    ingredient.save
-
+    param_ingredient = params[:ingredient]
+    if !(param_ingredient.nil?)
+      if !(param_ingredient[:name] === '') && !(param_ingredient[:price] === '') && !(param_ingredient[:unit] === '') && !(param_ingredient[:interval] === '')
+    	  # create new ingredient record
+        ingredient = Ingredient.new(ingredient_params)
+        ingredient.save
+        ingredient.code = 'IN' + (ingredient.id + 300).to_s.rjust(3, '0')
+        ingredient.save
+      end
+    end
 
     render nothing: true
-    
   end
 
 
@@ -86,17 +111,20 @@ class InventoryManagementController < ApplicationController
   end
 
   def create_equipment
-
-    # create new equipment record
-    equipment = Equipment.new(equipment_params)
-    equipment.save
-    equipment.code = 'IN' + (equipment.id + 300).to_s.rjust(3, '0')
-    equipment.save
-
+    param_equipment = params[:equipment_singular]
+    if !(param_equipment.nil?)
+      if !(param_equipment[:name] === '') && !(param_equipment[:price] === '')
+        # create new equipment record
+        equipment = Equipment.new(equipment_params)
+        equipment.save
+        equipment.code = 'EQ' + (equipment.id + 300).to_s.rjust(3, '0')
+        equipment.save
+      end
+    end
 
     render nothing: true
-    
   end
+
 
   private
     def ingredient_params

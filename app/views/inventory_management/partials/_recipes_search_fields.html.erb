@@ -1,18 +1,23 @@
 <!-- search recipes -->
-<%= form_tag inventory_management_recipes_path, :method => 'get', :id => 'recipes_search' do %>
+<%= form_tag inventory_management_recipes_path, :method => 'get', remote: true, :id => 'recipes_search' do %>
   <!-- search field -->
   <p>
     <%= text_field_tag :search_recipes %>
 
 
     <% # submit existing ingredients code in hidden field %>
-    <% @ingredients_for_recipe.each do |ingredient| %>
+    <% @ingredients_for_recipe[:ingredients].each do |ingredient| %>
       <%= hidden_field_tag 'existing_ingredients_code_for_recipe[]', ingredient.code %>
     <% end %>
-
+    <% @ingredients_for_recipe[:quantities].each do |quantity| %>
+      <%= hidden_field_tag 'existing_ingredients_quantity_for_recipe[]', quantity %>
+    <% end %>
     <% # submit existing equipment code in hidden field %>
-    <% @equipment_for_recipe.each do |equipment| %>
+    <% @equipment_for_recipe[:equipment].each do |equipment| %>
       <%= hidden_field_tag 'existing_equipment_code_for_recipe[]', equipment.code %>
+    <% end %>
+    <% @equipment_for_recipe[:types].each do |type| %>
+      <%= hidden_field_tag 'existing_equipment_type_for_recipe[]', type %>
     <% end %>
 
 
