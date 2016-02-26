@@ -182,17 +182,42 @@ class InventoryManagementController < ApplicationController
     @ingredients = []
     @quantities = []
     @recipe.ingredients.each do |code, quantity|
-      @ingredients << (Ingredient.find_by code: code)
+      ingredient = Ingredient.find_by code: code
+
+      if ingredient.nil?
+        @recipe.destroy
+        # store error messages (todo)
+        redirect_to inventory_management_recipes_path
+      end
+
+      @ingredients << ingredient 
       @quantities << quantity
     end
+
 
     @equipment = []
     @types = []
     @recipe.equipment.each do |code, type|
-      @equipment << (Equipment.find_by code: code)
+      equipment = Equipment.find_by code: code
+
+      if equipment.nil?
+        @recipe.destroy
+        # store error messages (todo)
+        redirect_to inventory_management_recipes_path
+      end
+
+      @equipment << equipment
       @types << type
     end
 
+  end
+
+
+  def delete_recipe
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+
+    redirect_to inventory_management_recipes_path
   end
 
 

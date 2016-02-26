@@ -52,20 +52,28 @@
       <!-- table of cooking instructions -->
       <div class="well">
       	<div class="page_header"><h4>Cooking Instructions</h4></div>
-		  <table class="table">
-		    <tr>
-		      <th>No.</th>
-		      <th>Instruction</th>
-		    </tr>
-		    <% @recipe.instructions.each_with_index do |step, i| %>
-		      <tr>
-		        <td><h4><%= i + 1 %></h4></td>
-		        <td><%= step %></td>
-		      </tr>
-		    <% end %>
-		  </table>
-		</div>
+	    <table class="table">
+	      <tr>
+	        <th>No.</th>
+	        <th>Instruction</th>
+	      </tr>
+	      <% @recipe.instructions.each_with_index do |step, i| %>
+	        <tr>
+	          <td><h4><%= i + 1 %></h4></td>
+	          <td><%= step %></td>
+	        </tr>
+	      <% end %>
+	    </table>
 	  </div>
+
+	  <hr />
+
+	  <%= button_to 'Delete', inventory_management_delete_recipe_path(@recipe), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
+
+	  <hr />
+
+	  <%= button_to 'Back', inventory_management_recipes_path, class: 'btn btn-default' %>
+
 
     </div>
   </div>
