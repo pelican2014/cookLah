@@ -1,53 +1,66 @@
 <!-- create new recipe -->
-<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsible_recipe" aria-expanded="false" aria-controls="collapsible_recipe">
+<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#create_recipe_ingredients_and_equipment" aria-expanded="false" aria-controls="create_recipe_form_ingredients_and_equipment">
   Create New Recipe
 </button>
 
-<div class="collapse" id="collapsible_recipe">
-  <div class="well">
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="create_recipe_form_ingredients_and_equipmentLabel" id="create_recipe_ingredients_and_equipment">
+  <div class="modal-dialog modal-lg">
+    <div class="well">
 
-  	<!-- ingredients section -->
-  	<div id="recipe_ingredients_section">
-	  <% # enter ingredient code and quantity to add ingredient %>
-	  <div id="add_ingredient_to_recipe_form_section">
-		<%= render '/inventory_management/partials/add_ingredient_to_recipe_form_section' %>
-	  </div>
-	  <div id="ingredients_table_for_recipe">
-		<% # table of ingredients to add to recipe %>
-		<%= render '/inventory_management/partials/ingredients_table_for_recipe' %>
-	  </div>
+  	  <!-- ingredients section -->
+  	  <div id="recipe_ingredients_section">
+	    <% # enter ingredient code and quantity to add ingredient %>
+	    <div id="add_ingredient_to_recipe_form_section">
+		  <%= render '/inventory_management/partials/add_ingredient_to_recipe_form_section' %>
+	    </div>
+	    <div id="ingredients_table_for_recipe">
+		  <% # table of ingredients to add to recipe %>
+		  <%= render '/inventory_management/partials/ingredients_table_for_recipe' %>
+	    </div>
 
-	  <% # button and modal associated with finding ingredients %>
-	  <%= render '/inventory_management/partials/recipe_modal/finding_ingredients' %>
+	    <% # button and modal associated with finding ingredients %>
+	    <%= render '/inventory_management/partials/recipe_modal/finding_ingredients' %>
 
-  	</div>
-
-
-	<!-- equipment section -->
-	<div id="recipe_equipment_section">
-	  <% # enter equipment code to add equipment %>
-	  <div id="add_equipment_to_recipe_form_section">
-		<%= render '/inventory_management/partials/add_equipment_to_recipe_form_section' %>
-	  </div>
-	  <div id="equipment_table_for_recipe">
-		<% # table of equipment to add to recipe %>
-		<%= render '/inventory_management/partials/equipment_table_for_recipe' %>
-	  </div>
-
-	  <% # button and modal associated with finding equipment %>
-	  <%= render '/inventory_management/partials/recipe_modal/finding_equipment' %>
-
-  	</div>
+  	  </div>
 
 
-	<%= form_for :recipe ,url: inventory_management_create_recipe_path, method: :post, html: {id: 'create_recipe_form'}, remote: true do |f| %>
+	  <!-- equipment section -->
+	  <div id="recipe_equipment_section">
+	    <% # enter equipment code to add equipment %>
+	    <div id="add_equipment_to_recipe_form_section">
+		  <%= render '/inventory_management/partials/add_equipment_to_recipe_form_section' %>
+	    </div>
+	    <div id="equipment_table_for_recipe">
+		  <% # table of equipment to add to recipe %>
+		  <%= render '/inventory_management/partials/equipment_table_for_recipe' %>
+	    </div>
 
-	  <%= f.label :name %>
-	  <%= f.text_field :name %>
+	    <% # button and modal associated with finding equipment %>
+	    <%= render '/inventory_management/partials/recipe_modal/finding_equipment' %>
 
-	  <%= f.submit 'Create', name: nil %>
+  	  </div>
 
-	<% end %>
+  	  <!--div class='modal-footer'-->
+		<%= form_for :recipe ,url: inventory_management_create_recipe_cooking_instructions_path, method: :post, html: {id: 'create_recipe_form_part_one'}, remote: false do |f| %>
 
+		  <% @ingredients_for_recipe[:ingredients].each do |ingredient| %>
+		    <%= hidden_field_tag 'recipe[ingredients][code][]', ingredient.code %>
+		  <% end %>
+		  <% @ingredients_for_recipe[:quantities].each do |quantity| %>
+		    <%= hidden_field_tag 'recipe[ingredients][quantity][]', quantity %>
+		  <% end %>
+		  <% @equipment_for_recipe[:equipment].each do |equipment| %>
+		    <%= hidden_field_tag 'recipe[equipment][code][]', equipment.code %>
+		  <% end %>
+		  <% @equipment_for_recipe[:types].each do |type| %>
+		    <%= hidden_field_tag 'recipe[equipment][type][]', type %>
+		  <% end %>
+
+		  <%= f.submit 'Continue', name: 'continue' %>
+
+		<% end %>
+	  <!--/div-->
+
+	</div>
   </div>
 </div>

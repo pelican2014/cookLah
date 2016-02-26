@@ -5,9 +5,9 @@ $(function(){
 
   function closeCollapsible(){
 
-    $('#collapsible_recipe').collapse('hide');
+    //$('#collapsible_recipe').collapse('hide');
 
-    $('#recipes_search').submit();
+    //$('#recipes_search').submit();
 
   }
 

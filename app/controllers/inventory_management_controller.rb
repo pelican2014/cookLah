@@ -8,8 +8,8 @@ class InventoryManagementController < ApplicationController
 
     # @ingredients and @equipment store search results for ingredients and equipment respectively
     # in the partials rendered within recipes
-    @ingredients = Ingredient.search(params[:search_ingredients]).page(params[:page]).per(50)
-    @equipment = Equipment.search(params[:search_equipment]).page(params[:page]).per(50)
+    @ingredients = Ingredient.search(params[:search_ingredients]).page(params[:page]).per(10)
+    @equipment = Equipment.search(params[:search_equipment]).page(params[:page]).per(10)
 
     # ingredients and equipment to add to recipe
     @ingredients_for_recipe = {ingredients: [], quantities: []}
@@ -75,12 +75,9 @@ class InventoryManagementController < ApplicationController
 
 
 
-  def create_recipe
+  def create_recipe_cooking_instructions
 
-
-
-
-    render nothing: true
+    
     
   end
 

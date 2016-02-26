@@ -1,38 +1,17 @@
 <!-- button and associated modal for finding equipment -->
-<button type="button" class="btn btn-primary" id="search_or_create_equipment_button" data-toggle="modal" data-target="#search_or_create_equipment">Find Equipment</button>
+<button type="button" class="btn btn-primary" id="search_or_create_equipment_button" data-toggle="collapse" data-target="#search_or_create_equipment">Find Equipment</button>
 
-<div class="modal fade bs-example-modal-lg" id="search_or_create_equipment" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-
-
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Find Equipment</h4>
-      </div>
-
-      <div class="modal-body">
-
-        <!-- search equipment -->
-        <div id="equipment_search_fields">
-          <%= render '/inventory_management/partials/recipe_modal/equipment_search_fields' %>
-        </div>
-
-        <!-- equipment search results -->
-        <div id="equipment_search_results">
-          <%= render '/inventory_management/partials/recipe_modal/equipment_search_results' %>
-        </div>
-
-        <!-- create equipment -->
-        <%= render '/inventory_management/partials/recipe_modal/create_equipment' %>
-
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-
-
-    </div>
+<div class="collapse" id="search_or_create_equipment">
+  <!-- search equipment -->
+  <div id="equipment_search_fields">
+    <%= render '/inventory_management/partials/recipe_modal/equipment_search_fields' %>
   </div>
+
+  <!-- equipment search results -->
+  <div id="equipment_search_results">
+    <%= render '/inventory_management/partials/recipe_modal/equipment_search_results' %>
+  </div>
+
+  <!-- create equipment -->
+  <%= render '/inventory_management/partials/recipe_modal/create_equipment' %>
 </div>
