@@ -10,12 +10,14 @@
     <%= form_for :equipment_singular ,url: inventory_management_create_equipment_path, method: :post, html: {id: 'create_equipment_form'}, remote: true do |f| %>
 
       <%= f.label :name %>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, class: 'form-control' %>
 
       <%= f.label :price %>
-      <%= f.text_field :price %>
+      <%= f.text_field :price, class: 'form-control' %>
 
-      <%= f.submit 'Create', name: nil %>
+      <hr />
+      
+      <%= f.submit 'Create', name: nil, class: 'btn btn-success' %>
 
     <% end %>
 

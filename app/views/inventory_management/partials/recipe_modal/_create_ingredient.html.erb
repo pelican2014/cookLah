@@ -3,6 +3,7 @@
   Create New Ingredient
 </button>
 
+<hr />
 
 <div class="collapse" id="collapsible_ingredient">
   <div class="well">
@@ -11,18 +12,20 @@
     <%= form_for :ingredient ,url: inventory_management_create_ingredient_path, method: :post, html: {id: 'create_ingredient_form'}, remote: true do |f| %>
 
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: 'form-control' %>
 
     <%= f.label :price %>
-    <%= f.text_field :price  %>
+    <%= f.text_field :price, class: 'form-control' %>
 
     <%= f.label :unit %>
-    <%= f.text_field :unit %>
+    <%= f.text_field :unit, class: 'form-control' %>
 
     <%= f.label :interval %>
-    <%= f.text_field :interval %>
+    <%= f.text_field :interval, class: 'form-control' %>
+    
+    <hr />
 
-    <%= f.submit 'Create', name: 'submit' %>
+    <%= f.submit 'Create', name: 'submit', class: 'btn btn-success' %>
 
     <% end %>
 

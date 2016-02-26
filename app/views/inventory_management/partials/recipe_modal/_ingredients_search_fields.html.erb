@@ -1,8 +1,8 @@
 <!-- search ingredients -->
 <%= form_tag inventory_management_recipes_path, :method => 'get', remote: true, id: 'ingredients_search_for_recipe' do %>
-<!-- search field -->
-<p>
-  <%= text_field_tag :search_ingredients %>
+
+  <!-- search field -->
+  <%= text_field_tag :search_ingredients, nil, class: 'form-control' %>
 
   <% # submit info about chosen ingredients and equipment in hidden field %>
   <% @ingredients_for_recipe[:ingredients].each do |ingredient| %>
@@ -18,6 +18,10 @@
     <%= hidden_field_tag 'existing_equipment_type_for_recipe[]', type %>
   <% end %>
 
-  <%= submit_tag 'Search', name: nil %>
-</p>
+  <hr />
+
+  <%= submit_tag 'Search', name: nil, class: 'btn btn-default' %>
+
+  <hr />
+
 <% end %>
