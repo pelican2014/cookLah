@@ -1,0 +1,30 @@
+<!-- create new ingredient -->
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsible_ingredient" aria-expanded="false" aria-controls="collapsible_ingredient">
+  Create New Ingredient
+</button>
+
+
+<div class="collapse" id="collapsible_ingredient">
+  <div class="well">
+
+  	<% # create new ingredient form %>
+    <%= form_for :ingredient ,url: inventory_management_create_ingredient_path, method: :post, html: {id: 'create_ingredient_form'}, remote: true do |f| %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :price %>
+    <%= f.text_field :price  %>
+
+    <%= f.label :unit %>
+    <%= f.text_field :unit %>
+
+    <%= f.label :interval %>
+    <%= f.text_field :interval %>
+
+    <%= f.submit 'Create', name: 'submit' %>
+
+    <% end %>
+
+  </div>
+</div>

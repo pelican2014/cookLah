@@ -1,0 +1,23 @@
+<!-- create new equipment -->
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsible_equipment" aria-expanded="false" aria-controls="collapsible_equipment">
+  Create New Equipment
+</button>
+
+<div class="collapse" id="collapsible_equipment">
+  <div class="well">
+
+    <% # Note -> :equipment will automatically match to plural form of Equipment %>
+    <%= form_for :equipment_singular ,url: inventory_management_create_equipment_path, method: :post, html: {id: 'create_equipment_form'}, remote: true do |f| %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :price %>
+      <%= f.text_field :price %>
+
+      <%= f.submit 'Create', name: nil %>
+
+    <% end %>
+
+  </div>
+</div>

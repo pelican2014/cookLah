@@ -15,6 +15,8 @@ class InventoryManagementController < ApplicationController
     @ingredients_for_recipe = []
     @equipment_for_recipe = []
 
+
+
     # add ingredients that have previously been added
     if params.has_key?(:existing_ingredients_code_for_recipe)
       params[:existing_ingredients_code_for_recipe].each do |code|
@@ -25,8 +27,26 @@ class InventoryManagementController < ApplicationController
 
     # add the last entered ingredient
     if params.has_key?(:ingredient_code)
-      @ingredients_for_recipe << (Ingredient.find_by code: params[:ingredient_code])
+      ingredient = Ingredient.find_by code: params[:ingredient_code]
+      @ingredients_for_recipe << ingredient if !(ingredient.nil?)
     end
+
+
+    # add equipment that have previously been added
+    if params.has_key?(:existing_equipment_code_for_recipe)
+      params[:existing_equipment_code_for_recipe].each do |code|
+        equipment = Equipment.find_by code: code
+        @equipment_for_recipe << equipment if !(equipment.nil?)
+      end
+    end
+
+    # add the last entered equipment
+    if params.has_key?(:equipment_code)
+        equipment = Equipment.find_by code: params[:equipment_code]
+      @equipment_for_recipe << equipment if !(equipment.nil?)
+    end
+
+
 
 
   end
@@ -52,6 +72,8 @@ class InventoryManagementController < ApplicationController
 	  # create new ingredient record
     ingredient = Ingredient.new(ingredient_params)
     ingredient.save
+    ingredient.code = 'IN' + (ingredient.id + 300).to_s.rjust(3, '0')
+    ingredient.save
 
 
     render nothing: true
@@ -67,6 +89,8 @@ class InventoryManagementController < ApplicationController
 
     # create new equipment record
     equipment = Equipment.new(equipment_params)
+    equipment.save
+    equipment.code = 'IN' + (equipment.id + 300).to_s.rjust(3, '0')
     equipment.save
 
 

@@ -1,7 +1,7 @@
 $(function(){
 
   // close collapsible and trigger search to update ingredients search results
-  $('#create_equipment_form').on('ajax:success', closeCollapsible);
+  $('#create_equipment_form').on('ajax:success', function(){
 
     $('#collapsible_equipment').collapse('hide');
 

@@ -8,6 +8,9 @@
   <% @ingredients_for_recipe.each do |ingredient| %>
     <%= hidden_field_tag 'existing_ingredients_code_for_recipe[]', ingredient.code %>
   <% end %>
+  <% @equipment_for_recipe.each do |equipment| %>
+    <%= hidden_field_tag 'existing_equipment_code_for_recipe[]', equipment.code %>
+  <% end %>
 
   <%= submit_tag 'Search', name: nil %>
 </p>

@@ -1,13 +1,18 @@
-<% # enter ingredient code to add ingredient %>
+<% # enter ingredient code and quantity to add ingredient %>
 <%= form_tag inventory_management_recipes_path, method: 'post', remote: true, id: 'add_ingredient_to_recipe' do %>
   <!-- ingredient code field -->
   <p>
     <div class="well">
-      <h4>Enter Ingredient Code and Quantity to Add to Recipe</h4><br />
+      <h4>Enter Ingredient Code and Quantity to add to recipe</h4><br />
       <p>Click Find Ingredients below to look for the code of ingredient or create a new ingredient if not found.</p>
+      <p>Note: When creating ingredient, there's a field called interval. Interval specifies how the customer can adjust amounts of ingredients.</p>
+      <p>For example, boneless chicken thign has the unit g. Say we normally provide 80g. We may set the interval to be 40. This way, the user will be able to customize based on a range of data points, namely 0g, 40g, 80g, 120g, 160g and so on.</p>
     </div>
     <%= label_tag :ingredient_code, 'Ingredient Code' %>
     <%= text_field_tag :ingredient_code %>
+
+    <%= label_tag :ingredient_quantity, 'Quantity' %>
+    <%= text_field_tag :ingredient_quantity %>
 
     <% # note: need to update this section after AJAX call %>
     <% # as otherwise the number of hidden fields would remain zero %>
@@ -15,8 +20,11 @@
     <% @ingredients_for_recipe.each do |ingredient| %>
       <%= hidden_field_tag 'existing_ingredients_code_for_recipe[]', ingredient.code %>
     <% end %>
+    <% # submit existing equipment code in hidden field %>
+    <% @equipment_for_recipe.each do |equipment| %>
+      <%= hidden_field_tag 'existing_equipment_code_for_recipe[]', equipment.code %>
+    <% end %>
 
-    <% # name is only nil here and 'submit' elsewhere for recipes -> create [] only when first open or add ingre %>
     <%= submit_tag 'Add', name: nil %>
   </p>
 <% end %>

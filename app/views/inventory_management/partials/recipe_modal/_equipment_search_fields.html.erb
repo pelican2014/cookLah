@@ -1,0 +1,17 @@
+<!-- search equipment -->
+<%= form_tag inventory_management_recipes_path, :method => 'get', remote: true, id: 'equipment_search_for_recipe' do %>
+<!-- search field -->
+<p>
+  <%= text_field_tag :search_equipment %>
+
+  <% # submit existing equipment code in hidden field %>
+  <% @ingredients_for_recipe.each do |ingredient| %>
+    <%= hidden_field_tag 'existing_ingredients_code_for_recipe[]', ingredient.code %>
+  <% end %>
+  <% @equipment_for_recipe.each do |equipment| %>
+    <%= hidden_field_tag 'existing_equipment_code_for_recipe[]', equipment.code %>
+  <% end %>
+
+  <%= submit_tag 'Search', name: nil %>
+</p>
+<% end %>

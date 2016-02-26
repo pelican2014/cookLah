@@ -7,13 +7,15 @@
       <th>Name</th>
       <th>Price</th>
       <th>Unit</th>
+      <th>Quantity</th>
     </tr>
-    <% @ingredients_for_recipe.each do |ingredient| %>
+    <% 1.upto(@ingredients_for_recipe.length) do |i| %>
       <tr>
-        <td><%= ingredient.code %></td>
-        <td><%= ingredient.name %></td>
-        <td><%= ingredient.price %></td>
-        <td><%= ingredient.unit %></td>
+        <td><%= @ingredients_for_recipe[i-1].code %></td>
+        <td><%= @ingredients_for_recipe[i-1].name %></td>
+        <td><%= @ingredients_for_recipe[i-1].price %></td>
+        <td><%= @ingredients_for_recipe[i-1].unit %></td>
+        <td><%=  %></td>
       </tr>
     <% end %>
   </table>
