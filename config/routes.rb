@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   # create recipe (part four of recipe creation)
   post 'inventory_management/create_recipe', to: 'inventory_management#create_recipe', as: 'inventory_management_create_recipe'
 
+  # output inventory information in json
+  get 'inventory_management/secret_rendezvous'
+
 
   devise_for :users
   devise_for :admins

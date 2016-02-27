@@ -278,6 +278,38 @@ class InventoryManagementController < ApplicationController
   end
 
 
+  # output inventory information in json
+  # change the function when adding / removing fields from database
+  def secret_rendezvous
+    @inventory = {:ingredients => [], :equipment => [], :recipes => []}
+
+    Ingredient.all.each do |ingredient|
+      @inventory[:ingredients] << {code: ingredient.code, name: ingredient.name, unit: ingredient.unit,
+                                    price: ingredient.price, interval: ingredient.interval}
+    end
+
+    Equipment.all.each do |equipment|
+      @inventory[:equipment] << {code: equipment.code, name: equipment.name, price: equipment.price}
+    end
+
+    Recipe.all.each do |recipe|
+      @inventory[:recipes] << {ingredients: recipe.ingredients, equipment: recipe.equipment,
+                                instructions: recipe.instructions, name: recipe.name, code: recipe.code,
+                                  symbol: recipe.symbol, dietary_restriction: recipe.dietary_restriction,
+                                   cooking_time: recipe.cooking_time, level_of_difficulty: recipe.level_of_difficulty,
+                                    course_and_region: recipe.course_and_region, price: recipe.price,
+                                      pax: recipe.pax}
+    end
+
+    require 'json'
+    @inventory = @inventory.to_json
+
+  end
+
+
+
+
+
   private
     def ingredient_params
       params.require(:ingredient).permit(:name, :price, :unit, :interval)
@@ -288,7 +320,7 @@ class InventoryManagementController < ApplicationController
     end
 
     def recipe_params
-      params.permit(:name, :course_and_region, :symbol, :dietary_restriction, :cooking_time, :level_of_difficulty)
+      params.permit(:name, :course_and_region, :symbol, :dietary_restriction, :cooking_time, :level_of_difficulty, :pax)
     end
 
 end
