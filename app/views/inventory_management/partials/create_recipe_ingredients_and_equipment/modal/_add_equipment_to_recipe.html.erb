@@ -1,7 +1,7 @@
 <% # enter equipment code to add equipment %>
 <%= form_tag inventory_management_recipes_path, method: 'post', remote: true do %>
   <!-- equipment code field -->
-  <div class="well">
+  <div class="well", style="background-color:white">
     <h4>Enter Equipment Code to add to recipe. Choose either MUST HAVE or WE SELL for each equipment.</h4><br />
     <p>Click Find Equipment below to look for the code of equipment or create a new equipment if not found.</p>
     <p>MUST HAVE means that we will remind customer that they must have the required equipment to cook, while WE SELL means that we can provide the given equipment with an added cost component (the price of equipment).</p>

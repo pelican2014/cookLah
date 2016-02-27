@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'inventory_management/recipes'
+  get 'inventory_management', to: 'inventory_management#recipes'
   post 'inventory_management/recipes'
   get 'inventory_management/recipes/:id', to: 'inventory_management#read_recipe', as: 'inventory_management_read_recipe'
   delete 'inventory_management/recipes/:id', to: 'inventory_management#delete_recipe', as: 'inventory_management_delete_recipe'
