@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   delete 'inventory_management/recipes/:id', to: 'inventory_management#delete_recipe', as: 'inventory_management_delete_recipe'
 
   get 'inventory_management/ingredients'
+  delete 'inventory_management/ingredients/:id', to: 'inventory_management#delete_ingredient', as: 'inventory_management_delete_ingredient'
 
   get 'inventory_management/equipment'
+  delete 'inventory_management/equipment/:id', to: 'inventory_management#delete_equipment', as: 'inventory_management_delete_equipment'
+
 
   # create ingredient
   post 'inventory_management/create_ingredient', to: 'inventory_management#create_ingredient', as: 'inventory_management_create_ingredient'

@@ -144,16 +144,18 @@ class InventoryManagementController < ApplicationController
     end
 
     equipment = {}
-    equipment_code_arr = recipe_ingredients_and_equipment['equipment']['code']
-    type_arr = recipe_ingredients_and_equipment['equipment']['type']
-    1.upto(equipment_code_arr.length) do |i|
-      # equipment store a hash {code => type}
-      equipment[equipment_code_arr[i-1]] = type_arr[i-1]
+    if !(recipe_ingredients_and_equipment['equipment'].nil?)
+      equipment_code_arr = recipe_ingredients_and_equipment['equipment']['code']
+      type_arr = recipe_ingredients_and_equipment['equipment']['type']
+      1.upto(equipment_code_arr.length) do |i|
+        # equipment store a hash {code => type}
+        equipment[equipment_code_arr[i-1]] = type_arr[i-1]
 
-      # sum up equipment price
-      equipment_singular = Equipment.find_by code: equipment_code_arr[i-1]
-      redirect_to homepage_index_path if equipment_singular.nil? # shouldn't happen
-      price += equipment_singular.price
+        # sum up equipment price
+        equipment_singular = Equipment.find_by code: equipment_code_arr[i-1]
+        redirect_to homepage_index_path if equipment_singular.nil? # shouldn't happen
+        price += equipment_singular.price
+      end
     end
 
 
@@ -241,6 +243,13 @@ class InventoryManagementController < ApplicationController
     render nothing: true
   end
 
+  def delete_ingredient
+    @ingredient = Ingredient.find(params[:id])
+    @ingredient.destroy
+
+    redirect_to inventory_management_ingredients_path
+  end
+
 
   def equipment
     @equipment = Equipment.search(params[:search]).page(params[:page]).per(50)
@@ -259,6 +268,13 @@ class InventoryManagementController < ApplicationController
     end
 
     render nothing: true
+  end
+
+  def delete_equipment
+    @equipment = Equipment.find(params[:id])
+    @equipment.destroy
+
+    redirect_to inventory_management_equipment_path
   end
 
 
