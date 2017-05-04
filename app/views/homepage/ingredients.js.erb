@@ -1,4 +1,7 @@
 // javascript response after ajax requests
 
 // reload search results partial
-$('#ingredients_search_results').html('<%= escape_javascript(render '/homepage/partials/ingredients_search_results') %>');
+//$('#ingredients_search_results').html('<%= escape_javascript(render '/homepage/partials/ingredients_search_results') %>');
+
+// reload entire page
+window.location.reload(false);

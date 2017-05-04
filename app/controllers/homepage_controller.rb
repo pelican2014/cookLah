@@ -240,8 +240,7 @@ class HomepageController < ApplicationController
       end
     end
 
-    # render nothing: true
-    redirect_to homepage_ingredients_path
+    render nothing: true
   end
 
   def delete_ingredient
@@ -268,8 +267,7 @@ class HomepageController < ApplicationController
       end
     end
 
-    # render nothing: true
-    redirect_to homepage_equipment_path
+    render nothing: true
   end
 
   def delete_equipment
@@ -324,5 +322,4 @@ class HomepageController < ApplicationController
     def recipe_params
       params.permit(:name, :region, :symbol, :dietary_restriction, :cooking_time, :level_of_difficulty, :pax)
     end
-
 end

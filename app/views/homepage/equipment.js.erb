@@ -1,4 +1,7 @@
 // javascript response after ajax requests
 
 // reload search results partial
-$('#equipment_search_results').html('<%= escape_javascript(render '/homepage/partials/equipment_search_results') %>');
+//$('#equipment_search_results').html('<%= escape_javascript(render '/homepage/partials/equipment_search_results') %>');
+
+// reload entire page
+window.location.reload(false);
