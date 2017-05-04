@@ -1,0 +1,28 @@
+<div id="equipment_search_results_info_and_table">
+
+  <!-- info about search query -->
+  <div>
+    <%= page_entries_info @equipment %>
+  </div>
+
+  <!-- table of search results -->
+  <table class="table">
+    <tr>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th></th>
+    </tr>
+    <% @equipment.each do |equipment| %>
+      <tr>
+        <td><%= equipment.code %></td>
+        <td><%= equipment.name %></td>
+        <td><%= equipment.price %></td>
+        <td><%= button_to 'Delete', homepage_delete_equipment_path(equipment), method: :delete, data: {confirm: 'Are you sure? Deletion of equipment will potentially lead to deletion of recipes created with it.'}, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<!-- page numbers -->
+<%= paginate @equipment, :remote => true %>

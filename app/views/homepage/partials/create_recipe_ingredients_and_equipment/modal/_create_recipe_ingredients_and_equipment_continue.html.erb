@@ -1,0 +1,18 @@
+<%= form_tag homepage_create_recipe_cooking_instructions_path, method: :post, remote: false do %>
+
+  <% @ingredients_for_recipe[:ingredients].each do |ingredient| %>
+    <%= hidden_field_tag 'recipe_ingredients_and_equipment[ingredients][code][]', ingredient.code %>
+  <% end %>
+  <% @ingredients_for_recipe[:quantities].each do |quantity| %>
+    <%= hidden_field_tag 'recipe_ingredients_and_equipment[ingredients][quantity][]', quantity %>
+  <% end %>
+  <% @equipment_for_recipe[:equipment].each do |equipment| %>
+    <%= hidden_field_tag 'recipe_ingredients_and_equipment[equipment][code][]', equipment.code %>
+  <% end %>
+  <% @equipment_for_recipe[:types].each do |type| %>
+    <%= hidden_field_tag 'recipe_ingredients_and_equipment[equipment][type][]', type %>
+  <% end %>
+
+  <%= submit_tag 'Continue', name: 'continue', class: 'btn btn-primary' %>
+
+<% end %>

@@ -1,44 +1,43 @@
 Rails.application.routes.draw do
-  get 'inventory_management/recipes'
-  get 'inventory_management', to: 'inventory_management#recipes'
-  post 'inventory_management/recipes'
-  get 'inventory_management/recipes/:id', to: 'inventory_management#read_recipe', as: 'inventory_management_read_recipe'
-  delete 'inventory_management/recipes/:id', to: 'inventory_management#delete_recipe', as: 'inventory_management_delete_recipe'
+  get 'homepage/recipes'
+  get 'homepage', to: 'homepage#recipes'
+  post 'homepage/recipes'
+  get 'homepage/recipes/:id', to: 'homepage#read_recipe', as: 'homepage_read_recipe'
+  delete 'homepage/recipes/:id', to: 'homepage#delete_recipe', as: 'homepage_delete_recipe'
 
-  get 'inventory_management/ingredients'
-  delete 'inventory_management/ingredients/:id', to: 'inventory_management#delete_ingredient', as: 'inventory_management_delete_ingredient'
+  get 'homepage/ingredients'
+  delete 'homepage/ingredients/:id', to: 'homepage#delete_ingredient', as: 'homepage_delete_ingredient'
 
-  get 'inventory_management/equipment'
-  delete 'inventory_management/equipment/:id', to: 'inventory_management#delete_equipment', as: 'inventory_management_delete_equipment'
+  get 'homepage/equipment'
+  delete 'homepage/equipment/:id', to: 'homepage#delete_equipment', as: 'homepage_delete_equipment'
 
 
   # create ingredient
-  post 'inventory_management/create_ingredient', to: 'inventory_management#create_ingredient', as: 'inventory_management_create_ingredient'
+  post 'homepage/create_ingredient', to: 'homepage#create_ingredient', as: 'homepage_create_ingredient'
   # create equipment
-  post 'inventory_management/create_equipment', to: 'inventory_management#create_equipment', as: 'inventory_management_create_equipment'
+  post 'homepage/create_equipment', to: 'homepage#create_equipment', as: 'homepage_create_equipment'
   
   # create recipe cooking instructions (part two of recipe creation)
-  post 'inventory_management/create_recipe_cooking_instructions', to: 'inventory_management#create_recipe_cooking_instructions', as: 'inventory_management_create_recipe_cooking_instructions'
+  post 'homepage/create_recipe_cooking_instructions', to: 'homepage#create_recipe_cooking_instructions', as: 'homepage_create_recipe_cooking_instructions'
 
   # recipe configuration (part three of recipe creation)
-  post 'inventory_management/create_recipe_configuration', to: 'inventory_management#create_recipe_configuration', as: 'inventory_management_create_recipe_configuration'
+  post 'homepage/create_recipe_configuration', to: 'homepage#create_recipe_configuration', as: 'homepage_create_recipe_configuration'
 
   # create recipe (part four of recipe creation)
-  post 'inventory_management/create_recipe', to: 'inventory_management#create_recipe', as: 'inventory_management_create_recipe'
+  post 'homepage/create_recipe', to: 'homepage#create_recipe', as: 'homepage_create_recipe'
 
   # output inventory information in json
-  get 'inventory_management/secret_rendezvous'
+  get 'homepage/secret_rendezvous'
 
 
   devise_for :users
   devise_for :admins
-  get 'homepage/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'homepage#index'
+  root 'homepage#recipes'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

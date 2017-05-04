@@ -1,0 +1,32 @@
+<div id="ingredients_search_results_info_and_table">
+
+  <!-- info about search query -->
+  <div>
+    <%= page_entries_info @ingredients %>
+  </div>
+
+  <!-- table of search results -->
+  <table class="table">
+    <tr>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Unit</th>
+      <th>Interval</th>
+      <th></th>
+    </tr>
+    <% @ingredients.each do |ingredient| %>
+      <tr>
+        <td><%= ingredient.code %></td>
+        <td><%= ingredient.name %></td>
+        <td><%= ingredient.price %></td>
+        <td><%= ingredient.unit %></td>
+        <td><%= ingredient.interval %></td>
+        <td><%= button_to 'Delete', homepage_delete_ingredient_path(ingredient), method: :delete, data: {confirm: 'Are you sure? Deletion of ingredient will potentially lead to deletion of recipes created with it.'}, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<!-- page numbers -->
+<%= paginate @ingredients, :remote => true %>

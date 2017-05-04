@@ -1,0 +1,31 @@
+<%= render '/homepage/partials/header' %>
+
+<div class="row">
+  <div class="col-xs-2">
+    <%= render 'homepage/partials/vertical_nav_bar' %>
+  </div>
+  <div class="col-xs-10">
+    <!-- create new ingredient section -->
+    <div id="create_new_ingredient_section">
+      <%= render '/homepage/partials/create_ingredient' %>
+    </div>
+
+    <!-- search ingredients -->
+    <%= form_tag homepage_ingredients_path, :method => 'get', :id => 'ingredients_search' do %>
+      <!-- search field -->
+      <p>
+        <%= text_field_tag :search, params[:search], class: 'form-control' %>
+
+        <hr />
+        
+        <%= submit_tag 'Search', name: nil, class: 'btn btn-default' %>
+      </p>
+
+    <% end %>
+
+    <!-- search results -->
+    <div id="ingredients_search_results">
+      <%= render '/homepage/partials/ingredients_search_results' %>
+    </div>
+  </div>
+</div>

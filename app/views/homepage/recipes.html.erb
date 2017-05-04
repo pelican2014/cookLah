@@ -1,0 +1,24 @@
+<%= render '/homepage/partials/header' %>
+
+<div class="row">
+  <div class="col-xs-2">
+  	<%= render 'homepage/partials/vertical_nav_bar' %>
+  </div>
+  <div class="col-xs-10">
+	<!-- search recipes -->
+	<div id="recipes_search_fields">
+	  <%= render '/homepage/partials/recipes_search_fields' %>
+	</div>
+
+	<!-- search results -->
+	<div id="recipes_search_results">
+	  <%= render '/homepage/partials/recipes_search_results' %>
+	</div>
+
+
+	<!-- create new recipe section -->
+	<div id="create_new_recipe_section">
+	  <%= render '/homepage/partials/create_recipe_ingredients_and_equipment/modal/create_recipe_ingredients_and_equipment' %>
+	</div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+// javascript response after ajax requests
+// reload parts of view (or else ajax can disrupt overlay)
+// reload strategic parts so that important information is updated
+
+// reload recipes search results partial
+$('#recipes_search_results').html('<%= escape_javascript(render '/homepage/partials/recipes_search_results') %>');
+
+
+// reload ingredients search results partial
+$('#ingredients_search_results').html('<%= escape_javascript(render '/homepage/partials/create_recipe_ingredients_and_equipment/collapsible_in_modal/ingredients_search_results') %>');
+// reload equipment search results partial
+$('#equipment_search_results').html('<%= escape_javascript(render '/homepage/partials/create_recipe_ingredients_and_equipment/collapsible_in_modal/equipment_search_results') %>');
+
+// reload ingredients for recipe table
+$('#ingredients_table_for_recipe').html('<%= escape_javascript(render '/homepage/partials/create_recipe_ingredients_and_equipment/modal/ingredients_table_for_recipe') %>');
+// reload equipment for recipe table
+$('#equipment_table_for_recipe').html('<%= escape_javascript(render '/homepage/partials/create_recipe_ingredients_and_equipment/modal/equipment_table_for_recipe') %>');
+
+
+// reload all the forms having the core path (the core path updates the ingredients chosen for recipe)
+// reload recipes search fields partial
+$('#recipes_search_fields').html('<%= escape_javascript(render '/homepage/partials/recipes_search_fields') %>');
+
+// reload add_ingredient_to_recipe_section
+$('#add_ingredient_to_recipe').html('<%= escape_javascript(render '/homepage/partials/create_recipe_ingredients_and_equipment/modal/add_ingredient_to_recipe') %>');
+// reload ingredients search fields partial
+$('#ingredients_search_fields').html('<%= escape_javascript(render '/homepage/partials/create_recipe_ingredients_and_equipment/collapsible_in_modal/ingredients_search_fields') %>');
+
+// reload add_equipment_to_recipe_section
+$('#add_equipment_to_recipe').html('<%= escape_javascript(render '/homepage/partials/create_recipe_ingredients_and_equipment/modal/add_equipment_to_recipe') %>');
+// reload equipment search fields partial
+$('#equipment_search_fields').html('<%= escape_javascript(render '/homepage/partials/create_recipe_ingredients_and_equipment/collapsible_in_modal/equipment_search_fields') %>');
+
+
+// reload the form containing 'continue to the next section' button
+$('#create_recipe_ingredients_and_equipment_continue').html('<%= escape_javascript(render '/homepage/partials/create_recipe_ingredients_and_equipment/modal/create_recipe_ingredients_and_equipment_continue') %>');
