@@ -12,8 +12,10 @@ $(function(){
 
   // });
 
-  $('.reload').click(()=>{
+  var tryReload = function(){
   	window.location.reload(false);
-  });
+  	setTimeOut(delayedReload, 500);
+  }
 
+  $('.reload').click(tryReload);
 });
