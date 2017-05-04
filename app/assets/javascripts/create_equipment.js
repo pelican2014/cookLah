@@ -12,6 +12,8 @@ $(function(){
 
   // });
 
-  $('.reload').click(()=>{window.location.reload(false)});
+  $('.reload').click(()=>{
+  	window.location.reload(false);
+  });
 
 });
