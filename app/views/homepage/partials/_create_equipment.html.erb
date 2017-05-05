@@ -9,7 +9,7 @@
   <div class="well">
 
     <% # Note -> :equipment will automatically match to plural form of Equipment %>
-    <%= form_for :equipment_singular ,url: homepage_create_equipment_path, method: :post, html: {id: 'create_equipment_form'}, remote: true do |f| %>
+    <%= form_for :equipment_singular ,url: homepage_create_equipment_path, method: :post, html: {class: 'form-reload', id: 'create_equipment_form'}, remote: true do |f| %>
 
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>
@@ -19,7 +19,7 @@
 
       <hr />
       
-      <%= f.submit 'Create', name: nil, class: 'btn btn-success reload' %>
+      <%= f.submit 'Create', name: nil, class: 'btn btn-success' %>
 
     <% end %>
 

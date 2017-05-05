@@ -9,7 +9,7 @@
   <div class="well">
 
   	<% # create new ingredient form %>
-    <%= form_for :ingredient ,url: homepage_create_ingredient_path, method: :post, html: {id: 'create_ingredient_form'}, remote: true do |f| %>
+    <%= form_for :ingredient ,url: homepage_create_ingredient_path, method: :post, html: {class: 'form-reload', id: 'create_ingredient_form'}, remote: true do |f| %>
 
     <%= f.label :name %>
     <%= f.text_field :name, class: 'form-control' %>
@@ -25,7 +25,7 @@
     
     <hr />
 
-    <%= f.submit 'Create', name: 'submit', class: 'btn btn-success reload' %>
+    <%= f.submit 'Create', name: 'submit', class: 'btn btn-success', click: '()=>{window.location.reload(false)}' %>
 
     <% end %>
 

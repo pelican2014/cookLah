@@ -11,4 +11,13 @@ $(function(){
   //   this.reset();
 
   // });
+
+  var delayedReload = function(){
+  	setTimeout(()=>{window.location.reload(false);}, 500);
+  }
+
+  $('.form-reload').submit(function(){
+  	delayedReload();
+  	return true;
+  });
 });
